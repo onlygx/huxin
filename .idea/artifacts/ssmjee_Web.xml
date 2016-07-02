@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ssmjee:Web">
+    <output-path>$PROJECT_DIR$/target/artifacts/ssmjee_Web</output-path>
+    <root id="archive" name="ssmjee_Web.war">
+      <element id="artifact" artifact-name="ssmjee:Web exploded" />
+    </root>
+  </artifact>
+</component>
