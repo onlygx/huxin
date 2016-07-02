@@ -39,7 +39,7 @@ public class SwaggerConfig {
     {
         return new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
                 .apiInfo(apiInfo())
-                .apiVersion("2.0")
+                .apiVersion("1.0")
                 .includePatterns("/app/.*?");
     }
 
@@ -47,8 +47,8 @@ public class SwaggerConfig {
     {
         ApiInfo apiInfo = new ApiInfo(
                 "互信平台json接口文档",
-                "在线即时接口，所有的session、request、response字段都不需要传输",
-                "http://onlygx.eicp.net/app",
+                "在线即时接口，有疑问及时联系。 ",
+                "http://onlygx.eicp.net",
                 "only_gx@126.com",
                 "My Licence",
                 "My License URL");

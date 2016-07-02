@@ -43,7 +43,10 @@ public class AppUserController {
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "更改资料",  notes = "更改当前登陆用户资料", position = 7)
-    public Tip<User> updateUser(@RequestBody User user,@ApiIgnore HttpSession session){
+    public Tip<User> updateUser(
+            @ApiParam(name = "user",value = "更改的内容有：nick/",required = true)
+            @RequestBody User user,
+            @ApiIgnore HttpSession session){
 
         try {
             User userData = (User) session.getAttribute(Const.USER);
@@ -302,6 +305,7 @@ public class AppUserController {
             @ApiParam(name = "phone",value = "手机号",required = true)
             String phone
     ){
+        System.out.println("准备发送验证码："+ phone);
         User user = userService.selectByPhone(phone);
         if(user != null){
             return new Tip(1);
@@ -310,6 +314,7 @@ public class AppUserController {
         String code = UUIDFactory.getCode6();
         session.setAttribute(Const.SECURITY_CODE,code);
         session.setAttribute(Const.SECURITY_PHONE,phone);
+        System.out.println("发送验证码："+ code);
         return new Tip(code);
     }
 
