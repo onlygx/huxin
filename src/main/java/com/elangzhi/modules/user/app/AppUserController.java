@@ -44,7 +44,7 @@ public class AppUserController {
     @ResponseBody
     @ApiOperation(value = "更改资料",  notes = "更改当前登陆用户资料", position = 7)
     public Tip<User> updateUser(
-            @ApiParam(name = "user",value = "更改的内容有：nick/",required = true)
+            @ApiParam(name = "user",value = "可更改的内容有：nick/province/city/district/address/intro",required = true)
             @RequestBody User user,
             @ApiIgnore HttpSession session){
 
@@ -259,6 +259,7 @@ public class AppUserController {
         userinfos.setName(user.getNick());
         userinfos.setNick(user.getNick());
         userinfos.setRemark(user.getId().toString());
+        userinfos.setExtra(user.getId().toString());
         return userinfos;
     }
 
