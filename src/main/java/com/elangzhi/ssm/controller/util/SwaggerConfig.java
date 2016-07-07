@@ -18,16 +18,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages ={"com.elangzhi.modules"})
 public class SwaggerConfig {
 
-    private SpringSwaggerConfig springSwaggerConfig;
 
     /**
      * Required to autowire SpringSwaggerConfig
      */
     @Autowired
-    public void setSpringSwaggerConfig(SpringSwaggerConfig springSwaggerConfig)
-    {
-        this.springSwaggerConfig = springSwaggerConfig;
-    }
+    private SpringSwaggerConfig springSwaggerConfig;
+
 
     /**
      * Every SwaggerSpringMvcPlugin bean is picked up by the swagger-mvc
