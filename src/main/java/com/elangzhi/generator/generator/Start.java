@@ -10,7 +10,7 @@ public class Start {
 
     public static void main(String[] args) {
 
-        new ModuleConfig("用户",User.class).startGenerator();
+        new ModuleConfig("挑战监督员",TargetSupervise.class).startGenerator();
 
     }
 }

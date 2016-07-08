@@ -29,7 +29,7 @@ import java.util.Date;
 */
 @Controller
 @RequestMapping("/app/user")
-@Api(value = "用户", description = "登录注册、资料修改、头像修改、密码修改", position = 1)
+@Api(value = "用户", description = "登录注册、资料修改、头像修改、密码修改")
 public class AppUserController {
 
 

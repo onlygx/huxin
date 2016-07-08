@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+* 挑战监督员 Mapper
+* @author GaoXiang
+* @version 1.0
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="TargetSuperviseMapper" >
+
+    <!-- 开启缓存 打印日志使用：LoggingEhcache。 不打印日志使用：EhcacheCache。 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <!-- 根据 id 查询所有列 -->
+    <select id="selectById" resultType="com.elangzhi.ssm.model.TargetSupervise" parameterType="long" >
+        select *
+        from t_target_supervise
+        where id = #{id}
+    </select>
+
+    <!-- 根据 id 删除 -->
+    <delete id="deleteById" parameterType="long" >
+        delete from t_target_supervise
+        where id = #{id}
+    </delete>
+
+    <!-- 批量删除，参数是名为ids的list -->
+    <delete id="deleteByIds" parameterType="list">
+        delete from t_target_supervise where id in
+        <foreach item="ids" collection="list" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 插入数据 -->
+    <insert id="insert" parameterType="com.elangzhi.ssm.model.TargetSupervise" >
+        insert into t_target_supervise (id,user_id,opinion,intro,target_id)
+        values (#{id},#{userId},#{opinion},#{intro},#{targetId})
+    </insert>
+
+    <!-- 根据 id 更新数据 -->
+    <update id="updateById" parameterType="com.elangzhi.ssm.model.TargetSupervise" >
+        update t_target_supervise
+        <set>
+            <if test="userId != null" >
+                user_id = #{userId},
+            </if>
+            <if test="opinion != null" >
+                opinion = #{opinion},
+            </if>
+            <if test="intro != null" >
+                intro = #{intro},
+            </if>
+            <if test="targetId != null" >
+                target_id = #{targetId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 查询列表，分页信息不在此处控制，参数为map，返回实体 -->
+    <select id="list" resultType="com.elangzhi.ssm.model.TargetSupervise" parameterType="map">
+        select *
+        from t_target_supervise
+        where 1=1
+    </select>
+
+    <!-- 根据 targetId 获取 supervise 列表 -->
+    <select id="listByTargetId" resultType="com.elangzhi.ssm.model.TargetSupervise" parameterType="map">
+        select *
+        from t_target_supervise
+        where 1=1
+        and target_id = #{targetId}
+    </select>
+
+</mapper>

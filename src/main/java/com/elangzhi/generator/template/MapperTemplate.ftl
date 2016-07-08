@@ -13,9 +13,9 @@
 
     <!-- 根据 id 查询所有列 -->
     <select id="selectById" resultType="${modelPackage}" parameterType="long" >
-        select <#list fieldList as field><#if (field_index == 0) >${field.under}<#else>,${field.under}</#if></#list>
-        from ${tableName}
-        where id = ${r'#{id}'}
+        select a.*
+        from ${tableName} a
+        where a.id = ${r'#{id}'}
     </select>
 
     <!-- 根据 id 删除 -->
@@ -56,8 +56,8 @@
 
     <!-- 查询列表，分页信息不在此处控制，参数为map，返回实体 -->
     <select id="list" resultType="${modelPackage}" parameterType="map">
-        select <#list fieldList as field><#if (field_index == 0) >${field.under}<#else>,${field.under}</#if></#list>
-        from ${tableName}
+        select a.*
+        from ${tableName} a
         where 1=1
     </select>
 
