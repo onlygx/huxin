@@ -85,9 +85,11 @@ public class User extends BaseModel {
      */
     private String wx;
 
+    private Long money;
+
     private Date setTime;
 
-    public User(Long id, String userName, String password, Integer type, Integer status, String intro, String phone, String province, String city, String district, String address, String sex, String head, String nick, String qq, String wx, Date setTime) {
+    public User(Long id, String userName, String password, Integer type, Integer status, String intro, String phone, String province, String city, String district, String address, String sex, String head, String nick, String qq, String wx, Date setTime,Long money) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -105,10 +107,19 @@ public class User extends BaseModel {
         this.qq = qq;
         this.wx = wx;
         this.setTime = setTime;
+        this.money = money;
     }
 
     public User() {
         super();
+    }
+
+    public Long getMoney() {
+        return money;
+    }
+
+    public void setMoney(Long money) {
+        this.money = money;
     }
 
     public Long getId() {

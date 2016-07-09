@@ -7,11 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.HttpMethod;
 
-import com.elangzhi.ssm.controller.json.Tip;
 import com.elangzhi.ssm.model.Account;
 import com.elangzhi.ssm.model.User;
 import com.elangzhi.ssm.tools.Const;
-import com.sun.tools.internal.ws.wsdl.document.http.HTTPConstants;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
