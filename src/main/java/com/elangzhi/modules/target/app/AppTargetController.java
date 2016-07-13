@@ -91,7 +91,7 @@ public class AppTargetController {
 
     @RequestMapping(value = "/listTarget", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "发现挑战列表",  notes = "发现挑战列表（分页）")
+    @ApiOperation(value = "发现挑战列表",  notes = "发现挑战列表（分页） ")
     public Tip<PageInfo<Target>> listTarget(
             @ApiIgnore HttpSession session,
             @ApiParam(name = "page",value = "第几页")
