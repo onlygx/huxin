@@ -34,8 +34,8 @@
 
     <!-- 插入数据 -->
     <insert id="insert" parameterType="com.elangzhi.ssm.model.User" >
-        insert into t_user (id,user_name,password,type,status,intro,phone,province,city,district,address,sex,head,nick,qq,wx,set_time)
-        values (#{id},#{userName},#{password},#{type},#{status},#{intro},#{phone},#{province},#{city},#{district},#{address},#{sex},#{head},#{nick},#{qq},#{wx},#{setTime})
+        insert into t_user (id,user_name,password,type,status,intro,phone,province,city,district,address,sex,head,nick,qq,wx,set_time,money)
+        values (#{id},#{userName},#{password},#{type},#{status},#{intro},#{phone},#{province},#{city},#{district},#{address},#{sex},#{head},#{nick},#{qq},#{wx},#{setTime},#{money})
     </insert>
 
     <!-- 根据 id 更新数据 -->
@@ -89,6 +89,9 @@
             </if>
             <if test="setTime != null" >
                 set_time = #{setTime},
+            </if>
+            <if test="money != null" >
+                money = #{money},
             </if>
         </set>
         where id = #{id}

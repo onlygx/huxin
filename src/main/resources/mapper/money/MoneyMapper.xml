@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+* 钱包 Mapper
+* @author GaoXiang
+* @version 1.0
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="MoneyMapper" >
+
+    <!-- 开启缓存 打印日志使用：LoggingEhcache。 不打印日志使用：EhcacheCache。 -->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+
+    <!-- 根据 id 查询所有列 -->
+    <select id="selectById" resultType="com.elangzhi.ssm.model.Money" parameterType="long" >
+        select a.*
+        from t_money a
+        where a.id = #{id}
+    </select>
+
+    <!-- 根据 id 删除 -->
+    <delete id="deleteById" parameterType="long" >
+        delete from t_money
+        where id = #{id}
+    </delete>
+
+    <!-- 批量删除，参数是名为ids的list -->
+    <delete id="deleteByIds" parameterType="list">
+        delete from t_money where id in
+        <foreach item="ids" collection="list" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 插入数据 -->
+    <insert id="insert" parameterType="com.elangzhi.ssm.model.Money" >
+        insert into t_money (id,money,intro,user_id,type,info_id,set_time)
+        values (#{id},#{money},#{intro},#{userId},#{type},#{infoId},#{setTime})
+    </insert>
+
+    <!-- 根据 id 更新数据 -->
+    <update id="updateById" parameterType="com.elangzhi.ssm.model.Money" >
+        update t_money
+        <set>
+            <if test="money != null" >
+                money = #{money},
+            </if>
+            <if test="intro != null" >
+                intro = #{intro},
+            </if>
+            <if test="userId != null" >
+                user_id = #{userId},
+            </if>
+            <if test="type != null" >
+                type = #{type},
+            </if>
+            <if test="infoId != null" >
+                info_id = #{infoId},
+            </if>
+            <if test="setTime != null" >
+                set_time = #{setTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!-- 查询列表，分页信息不在此处控制，参数为map，返回实体 -->
+    <select id="list" resultType="com.elangzhi.ssm.model.Money" parameterType="map">
+        select a.*
+        from t_money a
+        where 1=1
+    </select>
+
+    <!-- 查询列表，获取我的收支记录 返回实体 -->
+    <select id="listByUserId" resultType="com.elangzhi.ssm.model.Money" parameterType="long">
+        select a.*
+        from t_money a
+        where 1=1
+        and user_id = #{userId}
+    </select>
+
+</mapper>

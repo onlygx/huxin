@@ -88,9 +88,29 @@ public class AppTargetController {
         }
     }
 
+
+    @RequestMapping(value = "/listTarget", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "发现挑战列表",  notes = "发现挑战列表（分页）")
+    public Tip<PageInfo<Target>> listTarget(
+            @ApiIgnore HttpSession session,
+            @ApiParam(name = "page",value = "第几页")
+            @RequestParam Integer page,
+            @ApiParam(name = "id",value = "每页大小")
+            @RequestParam Integer size
+    ){
+        PageInfo<Target> targetPageInfo = null;
+        try {
+            targetPageInfo = targetService.list(null,page,size);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new Tip<>(targetPageInfo);
+    }
+
     @RequestMapping(value = "/listByMy", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "挑战列表",  notes = "获取我的挑战列表（分页）")
+    @ApiOperation(value = "我的挑战列表",  notes = "获取我的挑战列表（分页）")
     public Tip<PageInfo<Target>> listByMy(
             @ApiIgnore HttpSession session,
             @ApiParam(name = "page",value = "第几页")
@@ -98,6 +118,21 @@ public class AppTargetController {
             @ApiParam(name = "id",value = "每页大小")
             @RequestParam Integer size
     ){
+        User user = (User) session.getAttribute(Const.USER);
+        PageInfo<Target> targetPageInfo = targetService.listByUserId(user.getId(),page,size);
+        return new Tip<>(targetPageInfo);
+    }
+
+    @RequestMapping(value = "/listSuperviseByMy", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "我监督的",  notes = "我监督的挑战列表（分页）")
+    public Tip<PageInfo<Target>> listSuperviseByMy(
+                                         @ApiIgnore HttpSession session,
+                                         @ApiParam(name = "page",value = "第几页")
+                                         @RequestParam Integer page,
+                                         @ApiParam(name = "id",value = "每页大小")
+                                         @RequestParam Integer size){
+        //TODO
         User user = (User) session.getAttribute(Const.USER);
         PageInfo<Target> targetPageInfo = targetService.listByUserId(user.getId(),page,size);
         return new Tip<>(targetPageInfo);
