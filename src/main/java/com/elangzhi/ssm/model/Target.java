@@ -27,6 +27,11 @@ public class Target extends BaseModel {
     private Date setTime;
 
     /**
+     * 结束时间
+     */
+    private Date finishTime;
+
+    /**
      * 裁判
      */
     private String refereeId;
@@ -71,8 +76,15 @@ public class Target extends BaseModel {
     //当前坚持天数
     private Integer nowKeep;
 
+    /**
+     * 标签
+     * 多个用英文逗号拼接
+     */
+    private String tag;
+
     //监督员
     private List<TargetSupervise> superviseList;
+    private User user;
 
     public Target(Long id, String title, Long userId, Date setTime, String refereeId, Integer keep, Long price, Integer status, Integer type, Integer opinion, String content) {
         this.id = id;
@@ -90,6 +102,38 @@ public class Target extends BaseModel {
 
     public Target() {
         super();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public Date getFinishTime() {
+        return finishTime;
+    }
+
+    public void setFinishTime(Date finishTime) {
+        this.finishTime = finishTime;
+    }
+
+    public Integer getNowKeep() {
+        return nowKeep;
+    }
+
+    public void setNowKeep(Integer nowKeep) {
+        this.nowKeep = nowKeep;
     }
 
     public List<TargetSupervise> getSuperviseList() {

@@ -13,13 +13,21 @@ public class Money {
 
     /**
      * 1，充值
-     * 2，提现申请
+     * 2，提现
+     * 3，挑战支付
+     * 4，监督员分红
+     * 5，挑战成功获得
      */
     private Integer type;
 
     private Long infoId;
 
     private Date setTime;
+
+    /**
+     * 成功状态，1，成功。2，待处理；（提现用）
+     */
+    private Integer status;
 
     public Money(Long id, Long money, String intro, Long userId, Integer type, Long infoId, Date setTime) {
         this.id = id;
@@ -33,6 +41,14 @@ public class Money {
 
     public Money() {
         super();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Long getId() {

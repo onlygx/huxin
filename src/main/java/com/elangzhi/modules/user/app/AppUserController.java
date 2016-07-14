@@ -9,7 +9,6 @@ import com.elangzhi.ssm.tools.UUIDFactory;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.taobao.api.domain.Userinfos;
 import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
-import java.lang.reflect.Method;
 import java.util.Date;
 
 /**
@@ -32,6 +30,26 @@ import java.util.Date;
 @Api(value = "用户", description = "登录注册、资料修改、头像修改、密码修改")
 public class AppUserController {
 
+    /**
+     * 根据用户id获取某用户的信息
+     * @param id 用户id
+     * @return 用户信息
+     */
+    @RequestMapping(value = "/findById", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "获取用户信息",  notes = "根据用户id获取某用户的信息")
+    public Tip<User> findById(
+            @ApiParam(name = "id",value = "用户id",required = true)
+            @RequestParam Long id
+    ){
+        try {
+            User user = userService.selectById(id);
+            return new Tip<>(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Tip<>(1);
+        }
+    }
 
     /**
      * 更改用户信息
@@ -60,10 +78,10 @@ public class AppUserController {
             userService.updateById(userData);
             session.setAttribute(Const.USER,userData);
             openIMService.changeUser(createUserInfo(userData));
-            return new Tip(userData);
+            return new Tip<>(userData);
         } catch (Exception e) {
             e.printStackTrace();
-            return new Tip(1);
+            return new Tip<>(1);
         }
     }
 
@@ -103,13 +121,13 @@ public class AppUserController {
                 //更改阿里百川头像
                 openIMService.changeImg(user.getUserName(),saveUrl);
 
-                return new Tip(saveUrl);
+                return new Tip<>(saveUrl);
             } catch (Exception e) {
                 e.printStackTrace();
-                return new Tip(2);
+                return new Tip<>(2);
             }
         } else {
-            return new Tip(1);
+            return new Tip<>(1);
         }
     }
 
@@ -158,13 +176,13 @@ public class AppUserController {
     public Tip<String> sendPwdCode(@ApiIgnore HttpSession session,@RequestParam String userName){
         User user = userService.selectByUserName(userName);
         if(user == null){
-            return new Tip(1);
+            return new Tip<>(1);
         }
         //TODO 发送短信验证码
         String code = UUIDFactory.getCode6();
         session.setAttribute(Const.SECURITY_CODE,code);
         session.setAttribute(Const.SECURITY_PHONE,userName);
-        return new Tip(code);
+        return new Tip<>(code);
     }
 
     /**
@@ -188,13 +206,13 @@ public class AppUserController {
                     @ApiIgnore HttpSession session){
         User userData = userService.selectByUserName(userName);
         if(userData == null){
-            return new Tip(1);
+            return new Tip<>(1);
         }
         if(password.equals(userData.getPassword())){
             session.setAttribute(Const.USER,userData);
-            return new Tip(userData);
+            return new Tip<>(userData);
         }
-        return new Tip(2);
+        return new Tip<>(2);
     }
 
     /**
@@ -223,7 +241,7 @@ public class AppUserController {
 
         //验证码验证
         if(!validationCode(userName,code,session)){
-            return new Tip(2);
+            return new Tip<>(2);
         }
         User user = new User();
         user.setUserName(userName);
@@ -235,13 +253,14 @@ public class AppUserController {
         user.setSetTime(new Date());
         user.setType(1);
         user.setStatus(1);
+        user.setMoney(Long.valueOf("0"));
         try {
             userService.insert(user);
             openIMService.addUser(createUserInfo(user));
-            return new Tip(user);
+            return new Tip<>(user);
         } catch (Exception e) {
             e.printStackTrace();
-            return new Tip(1);
+            return new Tip<>(1);
         }
     }
 
@@ -309,14 +328,14 @@ public class AppUserController {
         System.out.println("准备发送验证码："+ phone);
         User user = userService.selectByPhone(phone);
         if(user != null){
-            return new Tip(1);
+            return new Tip<>(1);
         }
         //TODO 发送短信验证码
         String code = UUIDFactory.getCode6();
         session.setAttribute(Const.SECURITY_CODE,code);
         session.setAttribute(Const.SECURITY_PHONE,phone);
         System.out.println("发送验证码："+ code);
-        return new Tip(code);
+        return new Tip<>(code);
     }
 
     //---------------------------- property -------------------------------

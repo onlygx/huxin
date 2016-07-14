@@ -33,6 +33,8 @@ public class TargetSupervise extends BaseModel {
 
     private User user;
 
+
+
     public TargetSupervise(Long id, Long userId, Integer opinion, String intro, Long targetId) {
         this.id = id;
         this.userId = userId;

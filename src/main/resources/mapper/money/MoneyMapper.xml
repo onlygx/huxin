@@ -34,8 +34,8 @@
 
     <!-- 插入数据 -->
     <insert id="insert" parameterType="com.elangzhi.ssm.model.Money" >
-        insert into t_money (id,money,intro,user_id,type,info_id,set_time)
-        values (#{id},#{money},#{intro},#{userId},#{type},#{infoId},#{setTime})
+        insert into t_money (id,money,intro,user_id,type,info_id,set_time,status)
+        values (#{id},#{money},#{intro},#{userId},#{type},#{infoId},#{setTime},#{status})
     </insert>
 
     <!-- 根据 id 更新数据 -->
@@ -60,6 +60,9 @@
             <if test="setTime != null" >
                 set_time = #{setTime},
             </if>
+            <if test="status != null" >
+                status = #{status},
+            </if>
         </set>
         where id = #{id}
     </update>
@@ -71,12 +74,24 @@
         where 1=1
     </select>
 
-    <!-- 查询列表，获取我的收支记录 返回实体 -->
-    <select id="listByUserId" resultType="com.elangzhi.ssm.model.Money" parameterType="long">
+    <!-- 查询列表 -->
+    <select id="listParam" resultType="com.elangzhi.ssm.model.Money" parameterType="map">
         select a.*
         from t_money a
         where 1=1
-        and user_id = #{userId}
+        <if test="userId != null" >
+            and a.user_id = #{userId}
+        </if>
+        <if test="type != null" >
+            <if test="type == 1" >
+                and a.money > 0
+            </if>
+            <if test="type == 0" >
+                and a.money &lt;  0
+            </if>
+        </if>
     </select>
+
+
 
 </mapper>

@@ -91,7 +91,8 @@ public class MoneyDao extends LzDao<Money> {
         return list("MoneyMapper.list",map,new RowBounds(page,size));
     }
 
-    public PageInfo<Money> listByUserId(Long userId, Integer page, Integer size) throws Exception {
-        return list("MoneyMapper.listByUserId",userId,new RowBounds(page,size));
+
+    public PageInfo<Money> listParam(Map<String, String> map, Integer page, Integer size) throws Exception {
+        return list("MoneyMapper.listParam",map,new RowBounds(page,size));
     }
 }

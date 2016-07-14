@@ -106,4 +106,22 @@ public class TargetService extends BaseService<Target> {
             return null;
         }
     }
+
+    public PageInfo<Target> listBySupervise(Long userId, Integer page, Integer size) {
+        try {
+            return targetDao.listBySupervise(userId,page,size);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public PageInfo<Target> listByStatus(Integer status, Integer page, Integer size) {
+        try {
+            return targetDao.listByStatus(status,page,size);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

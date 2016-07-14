@@ -68,12 +68,21 @@
         where 1=1
     </select>
 
-    <!-- 查询列表，分页信息不在此处控制，参数为map，返回实体 -->
+    <!-- 查询列表,根据用户id -->
     <select id="listByUserId" resultType="com.elangzhi.ssm.model.Record" parameterType="long">
         select a.*
         from t_record a
         where 1=1
-        and user_id = #{userId}
+        and a.user_id = #{userId}
     </select>
+
+    <!-- 查询列表，根据挑战id -->
+    <select id="listByTargetId" resultType="com.elangzhi.ssm.model.Record" parameterType="long">
+        select a.*
+        from t_record a
+        where 1=1
+        and a.target_id = #{targetId}
+    </select>
+
 
 </mapper>

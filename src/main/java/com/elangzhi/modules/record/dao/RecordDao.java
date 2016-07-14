@@ -93,4 +93,8 @@ public class RecordDao extends LzDao<Record> {
     public PageInfo<Record> listByUserId(Long userId, Integer page, Integer size) throws Exception {
         return list("RecordMapper.listByUserId",userId,new RowBounds(page,size));
     }
+
+    public PageInfo<Record> listByTargetId(Long targetId, Integer page, Integer size)  throws Exception {
+        return list("RecordMapper.listByTargetId",targetId,new RowBounds(page,size));
+    }
 }

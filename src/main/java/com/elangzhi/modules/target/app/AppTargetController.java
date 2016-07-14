@@ -76,6 +76,7 @@ public class AppTargetController {
     ){
         try {
             Target target = targetService.selectById(id);
+            target.setUser(userService.selectById(target.getUserId()));
             List<TargetSupervise> targetSuperviseList = targetSuperviseService.listByTargetId(id);
             for(TargetSupervise ts : targetSuperviseList){
                 ts.setUser(userService.selectById(ts.getUserId()));
@@ -91,17 +92,22 @@ public class AppTargetController {
 
     @RequestMapping(value = "/listTarget", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "发现挑战列表",  notes = "发现挑战列表（分页） ")
+    @ApiOperation(value = "首页和发现挑战列表",  notes = "首页和发现发现挑战列表（分页），发现列表传4 ")
     public Tip<PageInfo<Target>> listTarget(
             @ApiIgnore HttpSession session,
+            @ApiParam(name = "status",value = "状态,1 挑战中（会获取status为1和2的）,3 已完成,4 获取全部")
+            @RequestParam Integer status,
             @ApiParam(name = "page",value = "第几页")
             @RequestParam Integer page,
-            @ApiParam(name = "id",value = "每页大小")
+            @ApiParam(name = "size",value = "每页大小")
             @RequestParam Integer size
     ){
         PageInfo<Target> targetPageInfo = null;
         try {
-            targetPageInfo = targetService.list(null,page,size);
+            targetPageInfo = targetService.listByStatus(status,page,size);
+            for(Target target : targetPageInfo.getList()){
+                target.setUser(userService.selectById(target.getUserId()));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -115,11 +121,14 @@ public class AppTargetController {
             @ApiIgnore HttpSession session,
             @ApiParam(name = "page",value = "第几页")
             @RequestParam Integer page,
-            @ApiParam(name = "id",value = "每页大小")
+            @ApiParam(name = "size",value = "每页大小")
             @RequestParam Integer size
     ){
         User user = (User) session.getAttribute(Const.USER);
         PageInfo<Target> targetPageInfo = targetService.listByUserId(user.getId(),page,size);
+        for(Target target : targetPageInfo.getList()){
+            target.setUser(userService.selectById(target.getUserId()));
+        }
         return new Tip<>(targetPageInfo);
     }
 
@@ -130,11 +139,13 @@ public class AppTargetController {
                                          @ApiIgnore HttpSession session,
                                          @ApiParam(name = "page",value = "第几页")
                                          @RequestParam Integer page,
-                                         @ApiParam(name = "id",value = "每页大小")
+                                         @ApiParam(name = "size",value = "每页大小")
                                          @RequestParam Integer size){
-        //TODO
         User user = (User) session.getAttribute(Const.USER);
-        PageInfo<Target> targetPageInfo = targetService.listByUserId(user.getId(),page,size);
+        PageInfo<Target> targetPageInfo = targetService.listBySupervise(user.getId(),page,size);
+        for(Target target : targetPageInfo.getList()){
+            target.setUser(userService.selectById(target.getUserId()));
+        }
         return new Tip<>(targetPageInfo);
     }
 

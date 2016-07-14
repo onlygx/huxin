@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
 * 钱包 客户端 Controller
@@ -33,30 +35,16 @@ public class AppMoneyController {
 
     @RequestMapping(value = "/addByZFB", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "充值",  notes = "使用支付宝充值")
+    @ApiOperation(value = "充值",  notes = "充值到钱包")
     public Tip<Money> addByZFB(
             @ApiIgnore HttpSession session,
             @ApiParam(name = "money",value = "金额")
             @RequestParam Long money){
         User user = (User) session.getAttribute(Const.USER);
-        money = Math.abs(money);
-
-        Money moneyRecord = new Money();
-        moneyRecord.setId(UUIDFactory.getLongId());
-        moneyRecord.setSetTime(new Date());
-        moneyRecord.setType(1);
-        moneyRecord.setInfoId(user.getId());
-        moneyRecord.setUserId(user.getId());
-        moneyRecord.setMoney(money);
-        moneyRecord.setIntro("支付宝充值");
+        long value = Math.abs(money);
         try {
-            moneyService.insert(moneyRecord);
-
-            //更新资金
-            user.setMoney(user.getMoney() + money);
-            userService.updateById(user);
-
-            return new Tip<>(moneyRecord);
+            moneyService.insertByType(user.getId(),1,value,user.getId());
+            return new Tip<>();
         } catch (Exception e) {
             e.printStackTrace();
             return new Tip<>(1);
@@ -66,30 +54,20 @@ public class AppMoneyController {
     @RequestMapping(value = "/outCash", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "提现",  notes = "提交提现申请，后台处理")
-    public Tip<Money> outCash(
+    public Tip<String> outCash(
                               @ApiIgnore HttpSession session,
                               @ApiParam(name = "money",value = "金额")
                               @RequestParam Long money
     ){
         User user = (User) session.getAttribute(Const.USER);
-        money = Math.abs(money);
-
-        Money moneyRecord = new Money();
-        moneyRecord.setId(UUIDFactory.getLongId());
-        moneyRecord.setSetTime(new Date());
-        moneyRecord.setType(2);
-        moneyRecord.setInfoId(user.getId());
-        moneyRecord.setUserId(user.getId());
-        moneyRecord.setMoney(Long.parseLong("-" + money));
-        moneyRecord.setIntro("支付宝充值");
+        long value = Math.abs(money);
         try {
-            moneyService.insert(moneyRecord);
-
-            //更新资金
-            user.setMoney(user.getMoney() - money);
-            userService.updateById(user);
-
-            return new Tip<>(moneyRecord);
+            int status = moneyService.insertByType(user.getId(),2,-value,user.getId());
+            if(status == 1){
+                return new Tip<>();
+            }else{
+                return new Tip<>(2,"余额不足");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return new Tip<>(1);
@@ -102,13 +80,21 @@ public class AppMoneyController {
     @ApiOperation(value = "我的资金记录",  notes = "获取我的收支列表（分页）")
     public Tip<PageInfo<Money>> listByMy(
             @ApiIgnore HttpSession session,
+            @ApiParam(name = "type",value = "收入支出。0支出，1收入")
+            @RequestParam Integer type,
             @ApiParam(name = "page",value = "第几页")
             @RequestParam Integer page,
-            @ApiParam(name = "id",value = "每页大小")
+            @ApiParam(name = "size",value = "每页大小")
             @RequestParam Integer size
     ){
+
+        Map<String,String> map  = new HashMap<>();
+        map.put("type",type.toString());
+
         User user = (User) session.getAttribute(Const.USER);
-        PageInfo<Money> targetPageInfo = moneyService.listByUserId(user.getId(),page,size);
+        map.put("userId",user.getId().toString());
+        PageInfo<Money> targetPageInfo = moneyService.listParam(map,page,size);
+
         return new Tip<>(targetPageInfo);
     }
 

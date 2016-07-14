@@ -95,8 +95,13 @@ public class UserService extends BaseService<User> {
     * @return 实体
     * @throws Exception 查询异常
     */
-    public User selectById(Long id) throws Exception {
-        return userDao.selectById(id);
+    public User selectById(Long id) {
+        try {
+            return userDao.selectById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**

@@ -102,4 +102,13 @@ public class RecordService extends BaseService<Record> {
             return null;
         }
     }
+
+    public PageInfo<Record> listByTargetId(Long targetId, Integer page, Integer size) {
+        try {
+            return recordDao.listByTargetId(targetId,page,size);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

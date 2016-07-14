@@ -101,4 +101,12 @@ public class TargetDao extends LzDao<Target> {
     public PageInfo<Target> listByUserId(Long userId,int page,int size) throws Exception {
         return list("TargetMapper.listByUserId",userId,new RowBounds(page,size));
     }
+
+    public PageInfo<Target> listBySupervise(Long userId, Integer page, Integer size) throws Exception{
+        return list("TargetMapper.listBySupervise",userId,new RowBounds(page,size));
+    }
+
+    public PageInfo<Target> listByStatus(Integer status, Integer page, Integer size) throws Exception{
+        return list("TargetMapper.listByStatus",status,new RowBounds(page,size));
+    }
 }
