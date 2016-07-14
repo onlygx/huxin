@@ -1,5 +1,6 @@
 package com.elangzhi.modules.target.app;
 
+import com.elangzhi.modules.money.services.MoneyService;
 import com.elangzhi.modules.target.services.TargetService;
 import com.elangzhi.modules.targetSupervise.services.TargetSuperviseService;
 import com.elangzhi.modules.user.services.UserService;
@@ -32,6 +33,15 @@ import java.util.List;
 @Api(value = "挑战", description = "挑战发起、监督")
 public class AppTargetController {
 
+    /**
+     * 提交挑战信息并支付
+     * @param target 挑战信息
+     * @param supervise 监督员id
+     * @param session session
+     * @return 挑战信息
+     * 1，系统错误
+     * 2，余额不足
+     */
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "提交挑战",  notes = "发起挑战")
@@ -43,12 +53,20 @@ public class AppTargetController {
             @ApiIgnore HttpSession session
     ){
         try {
+            long value = Math.abs(target.getPrice());
+            User user = (User)session.getAttribute(Const.USER);
+            //验证余额
+            int status = moneyService.insertByType(user.getId(),3,-value,target.getId());
+            if(status == 2){
+                return new Tip<>(2);
+            }
+            //初始化挑战
             target.setId(UUIDFactory.getLongId());
             target.setSetTime(new Date());
             target.setType(1);
             target.setStatus(1);
             target.setOpinion(2);
-            target.setUserId(((User)session.getAttribute(Const.USER)).getId());
+            target.setUserId(user.getId());
 
             for(String s : supervise.split(",")){
                 TargetSupervise ts = new TargetSupervise();
@@ -162,4 +180,7 @@ public class AppTargetController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private MoneyService moneyService;
 }

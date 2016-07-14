@@ -109,7 +109,7 @@ public class MoneyService extends BaseService<Money> {
      * @param InfoId 类型对应id，针对挑战的就传递挑战id，针对用户的就传用户id
      * @return 标志：0，失败；1，成功；2，余额不足；
      */
-    public Integer insertByType(Long userId,Integer type,Long money,Long InfoId){
+    public Integer insertByType(Long userId,Integer type,Long money,Long InfoId) throws Exception {
         Money moneyRecord = new Money();
         moneyRecord.setId(UUIDFactory.getLongId());
         moneyRecord.setSetTime(new Date());
@@ -139,26 +139,22 @@ public class MoneyService extends BaseService<Money> {
                 moneyRecord.setStatus(1);
             }break;
         }
-        try {
-            //判断余额
-            User user = userService.selectById(userId);
-            long value = user.getMoney() + money;
-            if(value < 0){
-                return 2;
-            }
 
-            //插入记录
-             insert(moneyRecord);
-
-            //更新资金
-            user.setMoney(value);
-            userService.updateById(user);
-
-            return 1;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return 0;
+        //判断余额
+        User user = userService.selectById(userId);
+        long value = user.getMoney() + money;
+        if(value < 0){
+            return 2;
         }
+
+        //插入记录
+        insert(moneyRecord);
+
+        //更新资金
+        user.setMoney(value);
+        userService.updateById(user);
+
+        return 1;
 
 
     }
