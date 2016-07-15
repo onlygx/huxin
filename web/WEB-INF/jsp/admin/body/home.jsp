@@ -15,7 +15,7 @@
 	<strong>欢迎登陆！</strong> <a href="/druid" target="_blank" > 点此查看 druid 监控数据</a>
 </div>
 
-<div class="note note-success">
+<div class="note note-success hide">
 	<h4 class="block">Session Admin</h4>
 	<ul>
 		<li>ID：${admin.id}</li>
@@ -34,7 +34,7 @@
 </div>
 
 
-<div class="note note-danger">
+<div class="note note-danger hide">
 	<h4 class="block">Session powerList</h4>
     <ul>
         <li>权限个数：${powerList.size()}</li>

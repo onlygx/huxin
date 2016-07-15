@@ -1,5 +1,6 @@
 package com.elangzhi.ssm.dao;
 
+import com.elangzhi.ssm.controller.util.ParamMap;
 import com.elangzhi.ssm.model.Admin;
 import com.elangzhi.ssm.dao.LzDao;
 import com.github.pagehelper.PageInfo;
@@ -90,4 +91,7 @@ public class AdminDao extends LzDao<Admin> {
         return list("AdminMapper.list",map,new RowBounds(page,size));
     }
 
+    public PageInfo<Admin> listByParam(ParamMap paramMap, Integer page, Integer size) throws Exception {
+        return list("AdminMapper.listByParam",paramMap,new RowBounds(page,size));
+    }
 }

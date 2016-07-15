@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source name="MySQL - huxin@localhost" uuid="ea07c4cf-13aa-4c95-be80-6ebafca615e6">
-    <database-info product="MySQL" version="5.6.24-ndb-7.4.6-cluster-commercial-advanced" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.36 ( Revision: 4fc1f969f740409a4e03750316df2c0e429f3dc8 )">
+    <database-info product="MySQL" version="5.7.13" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.36 ( Revision: 4fc1f969f740409a4e03750316df2c0e429f3dc8 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
     </database-info>
@@ -10,495 +10,540 @@
       <schema id="1" name="huxin">
         <visible>1</visible>
       </schema>
-      <table id="2" parent="1" name="t_account"/>
-      <table id="3" parent="1" name="t_account_role"/>
-      <table id="4" parent="1" name="t_admin"/>
-      <table id="5" parent="1" name="t_city">
+      <schema id="2" name="information_schema"/>
+      <schema id="3" name="mysql"/>
+      <schema id="4" name="performance_schema"/>
+      <schema id="5" name="saagood"/>
+      <schema id="6" name="sys"/>
+      <table id="7" parent="1" name="t_account"/>
+      <table id="8" parent="1" name="t_account_role"/>
+      <table id="9" parent="1" name="t_admin"/>
+      <table id="10" parent="1" name="t_city">
         <comment>地区信息</comment>
       </table>
-      <table id="6" parent="1" name="t_log"/>
-      <table id="7" parent="1" name="t_money"/>
-      <table id="8" parent="1" name="t_power"/>
-      <table id="9" parent="1" name="t_record"/>
-      <table id="10" parent="1" name="t_role"/>
-      <table id="11" parent="1" name="t_role_power"/>
-      <table id="12" parent="1" name="t_settings"/>
-      <table id="13" parent="1" name="t_target"/>
-      <table id="14" parent="1" name="t_target_supervise"/>
-      <table id="15" parent="1" name="t_user"/>
-      <table id="16" parent="1" name="t_version"/>
-      <column id="17" parent="2" name="id">
+      <table id="11" parent="1" name="t_log"/>
+      <table id="12" parent="1" name="t_money"/>
+      <table id="13" parent="1" name="t_power"/>
+      <table id="14" parent="1" name="t_record"/>
+      <table id="15" parent="1" name="t_role"/>
+      <table id="16" parent="1" name="t_role_power"/>
+      <table id="17" parent="1" name="t_settings"/>
+      <table id="18" parent="1" name="t_target"/>
+      <table id="19" parent="1" name="t_target_supervise"/>
+      <table id="20" parent="1" name="t_user"/>
+      <table id="21" parent="1" name="t_version"/>
+      <table id="22" parent="1" name="t_bank_card"/>
+      <column id="23" parent="7" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="18" parent="2" name="user_name">
+      <column id="24" parent="7" name="user_name">
         <comment>用户名</comment>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="19" parent="2" name="password">
+      <column id="25" parent="7" name="password">
         <comment>密码</comment>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="20" parent="2" name="type">
+      <column id="26" parent="7" name="type">
         <comment>用户类型，1普通用户，2，管理员</comment>
         <data-type>int(2)|0</data-type>
         <default-expression>&apos;1&apos;</default-expression>
       </column>
-      <column id="21" parent="2" name="status">
+      <column id="27" parent="7" name="status">
         <comment>用户状态1正常，0被封</comment>
         <data-type>int(2)|0</data-type>
         <default-expression>&apos;1&apos;</default-expression>
       </column>
-      <column id="22" parent="2" name="info_id">
+      <column id="28" parent="7" name="info_id">
         <comment>详细信息id</comment>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="23" parent="2" name="qq_id">
+      <column id="29" parent="7" name="qq_id">
         <data-type>varchar(100)|0</data-type>
       </column>
-      <column id="24" parent="2" name="sina_id">
+      <column id="30" parent="7" name="sina_id">
         <data-type>varchar(100)|0</data-type>
       </column>
-      <index id="25" parent="2" name="info_id">
+      <index id="31" parent="7" name="info_id">
         <columns>info_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="26" parent="2" name="PRIMARY">
+      <key id="32" parent="7" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="27" parent="3" name="id">
+      <column id="33" parent="8" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="28" parent="3" name="account_id">
+      <column id="34" parent="8" name="account_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="29" parent="3" name="role_id">
+      <column id="35" parent="8" name="role_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <index id="30" parent="3" name="a_r_a">
+      <index id="36" parent="8" name="a_r_a">
         <columns>account_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="31" parent="3" name="a_r_r">
+      <index id="37" parent="8" name="a_r_r">
         <columns>role_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="32" parent="3" name="PRIMARY">
+      <key id="38" parent="8" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="33" parent="4" name="id">
+      <column id="39" parent="9" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="34" parent="4" name="name">
+      <column id="40" parent="9" name="name">
         <data-type>varchar(20)|0</data-type>
       </column>
-      <column id="35" parent="4" name="email">
+      <column id="41" parent="9" name="email">
         <data-type>varchar(30)|0</data-type>
       </column>
-      <column id="36" parent="4" name="phone">
+      <column id="42" parent="9" name="phone">
         <data-type>varchar(20)|0</data-type>
       </column>
-      <column id="37" parent="4" name="address">
+      <column id="43" parent="9" name="address">
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="38" parent="4" name="sex">
+      <column id="44" parent="9" name="sex">
         <data-type>int(2)|0</data-type>
       </column>
-      <column id="39" parent="4" name="id_card">
+      <column id="45" parent="9" name="id_card">
         <data-type>varchar(20)|0</data-type>
       </column>
-      <column id="40" parent="4" name="set_time">
+      <column id="46" parent="9" name="set_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <column id="41" parent="4" name="head">
+      <column id="47" parent="9" name="head">
         <comment>user head image</comment>
         <data-type>varchar(300)|0</data-type>
       </column>
-      <key id="42" parent="4" name="PRIMARY">
+      <key id="48" parent="9" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="43" parent="5" name="id">
+      <column id="49" parent="10" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(11) unsigned|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="44" parent="5" name="parent_id">
+      <column id="50" parent="10" name="parent_id">
         <comment>父id</comment>
         <data-type>bigint(11) unsigned|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="45" parent="5" name="name">
+      <column id="51" parent="10" name="name">
         <comment>省市地区名称</comment>
         <data-type>varchar(50)|0</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="46" parent="5" name="py">
+      <column id="52" parent="10" name="py">
         <comment>省市地区拼音</comment>
         <data-type>varchar(50)|0</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="47" parent="5" name="code">
+      <column id="53" parent="10" name="code">
         <comment>邮政编码</comment>
         <data-type>varchar(6)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="48" parent="5" name="type">
+      <column id="54" parent="10" name="type">
         <comment>类型(0:国家;1:省份;2:城市;3:地区)</comment>
         <data-type>int(1)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <column id="49" parent="5" name="special">
+      <column id="55" parent="10" name="special">
         <comment>直辖市的标记(0:否;1:是)</comment>
         <data-type>int(1)|0</data-type>
         <default-expression>&apos;0&apos;</default-expression>
       </column>
-      <index id="50" parent="5" name="area_type">
+      <index id="56" parent="10" name="area_type">
         <columns>type</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="51" parent="5" name="parent_id">
+      <index id="57" parent="10" name="parent_id">
         <columns>parent_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="52" parent="5" name="py_name">
+      <index id="58" parent="10" name="py_name">
         <columns>py</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="53" parent="5" name="PRIMARY">
+      <key id="59" parent="10" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="54" parent="6" name="id">
+      <column id="60" parent="11" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="55" parent="6" name="content">
+      <column id="61" parent="11" name="content">
         <data-type>varchar(400)|0</data-type>
       </column>
-      <column id="56" parent="6" name="type">
+      <column id="62" parent="11" name="type">
         <data-type>int(2)|0</data-type>
       </column>
-      <column id="57" parent="6" name="set_time">
+      <column id="63" parent="11" name="set_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <column id="58" parent="6" name="account_id">
+      <column id="64" parent="11" name="account_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="59" parent="6" name="status">
+      <column id="65" parent="11" name="status">
         <data-type>int(2)|0</data-type>
       </column>
-      <key id="60" parent="6" name="PRIMARY">
+      <key id="66" parent="11" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="61" parent="7" name="id">
+      <column id="67" parent="12" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="62" parent="7" name="money">
+      <column id="68" parent="12" name="money">
         <data-type>decimal(10)|0</data-type>
       </column>
-      <column id="63" parent="7" name="intro">
+      <column id="69" parent="12" name="intro">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="64" parent="7" name="user_id">
+      <column id="70" parent="12" name="user_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="65" parent="7" name="type">
+      <column id="71" parent="12" name="type">
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="66" parent="7" name="info_id">
+      <column id="72" parent="12" name="info_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="67" parent="7" name="set_time">
+      <column id="73" parent="12" name="set_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <key id="68" parent="7" name="PRIMARY">
+      <column id="74" parent="12" name="status">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <key id="75" parent="12" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="69" parent="8" name="id">
+      <column id="76" parent="13" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="70" parent="8" name="name">
+      <column id="77" parent="13" name="name">
         <comment>权限名称</comment>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="71" parent="8" name="intro">
+      <column id="78" parent="13" name="intro">
         <comment>简介</comment>
         <data-type>varchar(200)|0</data-type>
       </column>
-      <column id="72" parent="8" name="parent_id">
+      <column id="79" parent="13" name="parent_id">
         <comment>父级权限</comment>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="73" parent="8" name="type">
+      <column id="80" parent="13" name="type">
         <comment>权限类型</comment>
         <data-type>int(2)|0</data-type>
       </column>
-      <column id="74" parent="8" name="url">
+      <column id="81" parent="13" name="url">
         <comment>权限跳转url</comment>
         <data-type>varchar(200)|0</data-type>
       </column>
-      <column id="75" parent="8" name="sort">
+      <column id="82" parent="13" name="sort">
         <comment>权限排序</comment>
         <data-type>int(3)|0</data-type>
       </column>
-      <column id="76" parent="8" name="icon">
+      <column id="83" parent="13" name="icon">
         <data-type>varchar(200)|0</data-type>
       </column>
-      <key id="77" parent="8" name="PRIMARY">
+      <key id="84" parent="13" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="78" parent="9" name="id">
+      <column id="85" parent="14" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="79" parent="9" name="title">
+      <column id="86" parent="14" name="title">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="80" parent="9" name="content">
+      <column id="87" parent="14" name="content">
         <data-type>text|0</data-type>
       </column>
-      <column id="81" parent="9" name="user_id">
+      <column id="88" parent="14" name="user_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="82" parent="9" name="set_time">
+      <column id="89" parent="14" name="set_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <column id="83" parent="9" name="target_id">
+      <column id="90" parent="14" name="target_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <key id="84" parent="9" name="PRIMARY">
+      <key id="91" parent="14" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="85" parent="10" name="id">
+      <column id="92" parent="15" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="86" parent="10" name="name">
+      <column id="93" parent="15" name="name">
         <comment>权限名称</comment>
         <data-type>varchar(50)|0</data-type>
       </column>
-      <column id="87" parent="10" name="intro">
+      <column id="94" parent="15" name="intro">
         <comment>简介</comment>
         <data-type>varchar(200)|0</data-type>
       </column>
-      <column id="88" parent="10" name="set_time">
+      <column id="95" parent="15" name="set_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <column id="89" parent="10" name="account_id">
+      <column id="96" parent="15" name="account_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <key id="90" parent="10" name="PRIMARY">
+      <key id="97" parent="15" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="91" parent="11" name="id">
+      <column id="98" parent="16" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="92" parent="11" name="role_id">
+      <column id="99" parent="16" name="role_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="93" parent="11" name="power_id">
+      <column id="100" parent="16" name="power_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <index id="94" parent="11" name="role">
+      <index id="101" parent="16" name="role">
         <columns>role_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <index id="95" parent="11" name="role_power">
+      <index id="102" parent="16" name="role_power">
         <columns>power_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="96" parent="11" name="PRIMARY">
+      <key id="103" parent="16" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="97" parent="12" name="id">
+      <column id="104" parent="17" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="98" parent="12" name="name">
+      <column id="105" parent="17" name="name">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="99" parent="12" name="value">
+      <column id="106" parent="17" name="value">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="100" parent="12" name="account_id">
+      <column id="107" parent="17" name="account_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="101" parent="12" name="type">
+      <column id="108" parent="17" name="type">
         <comment>settings type</comment>
         <data-type>int(11)|0</data-type>
       </column>
-      <index id="102" parent="12" name="s_a">
+      <index id="109" parent="17" name="s_a">
         <columns>account_id</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="103" parent="12" name="PRIMARY">
+      <key id="110" parent="17" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="104" parent="13" name="id">
+      <column id="111" parent="18" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="105" parent="13" name="title">
+      <column id="112" parent="18" name="title">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="106" parent="13" name="content">
+      <column id="113" parent="18" name="content">
         <data-type>text|0</data-type>
       </column>
-      <column id="107" parent="13" name="user_id">
+      <column id="114" parent="18" name="user_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="108" parent="13" name="set_time">
+      <column id="115" parent="18" name="finish_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <column id="109" parent="13" name="referee_id">
+      <column id="116" parent="18" name="set_time">
+        <data-type>timestamp|0</data-type>
+      </column>
+      <column id="117" parent="18" name="referee_id">
         <comment>裁判id</comment>
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="110" parent="13" name="keep">
+      <column id="118" parent="18" name="keep">
         <comment>坚持时长（天）</comment>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="111" parent="13" name="price">
+      <column id="119" parent="18" name="price">
         <data-type>decimal(10,2)|0</data-type>
       </column>
-      <column id="112" parent="13" name="status">
+      <column id="120" parent="18" name="status">
         <comment>状态</comment>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="113" parent="13" name="type">
+      <column id="121" parent="18" name="type">
         <comment>类型</comment>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="114" parent="13" name="opinion">
+      <column id="122" parent="18" name="opinion">
         <comment>2，进行中；1，通过；0，不通过</comment>
         <data-type>int(11)|0</data-type>
       </column>
-      <key id="115" parent="13" name="PRIMARY">
+      <column id="123" parent="18" name="tag">
+        <data-type>varchar(300)|0</data-type>
+      </column>
+      <key id="124" parent="18" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="116" parent="14" name="id">
+      <column id="125" parent="19" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="117" parent="14" name="user_id">
+      <column id="126" parent="19" name="user_id">
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="118" parent="14" name="opinion">
+      <column id="127" parent="19" name="opinion">
         <comment>2，未选择；1，通过；0，不通过</comment>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="119" parent="14" name="intro">
+      <column id="128" parent="19" name="intro">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="120" parent="14" name="target_id">
+      <column id="129" parent="19" name="target_id">
         <comment>所属挑战</comment>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <key id="121" parent="14" name="PRIMARY">
+      <key id="130" parent="19" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="122" parent="15" name="id">
+      <column id="131" parent="20" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
       </column>
-      <column id="123" parent="15" name="user_name">
+      <column id="132" parent="20" name="user_name">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="124" parent="15" name="password">
+      <column id="133" parent="20" name="password">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="125" parent="15" name="type">
+      <column id="134" parent="20" name="type">
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="126" parent="15" name="status">
+      <column id="135" parent="20" name="status">
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="127" parent="15" name="intro">
+      <column id="136" parent="20" name="intro">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="128" parent="15" name="phone">
+      <column id="137" parent="20" name="phone">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="129" parent="15" name="province">
+      <column id="138" parent="20" name="province">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="130" parent="15" name="city">
+      <column id="139" parent="20" name="city">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="131" parent="15" name="district">
+      <column id="140" parent="20" name="district">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="132" parent="15" name="address">
+      <column id="141" parent="20" name="address">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="133" parent="15" name="sex">
+      <column id="142" parent="20" name="sex">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="134" parent="15" name="head">
+      <column id="143" parent="20" name="head">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="135" parent="15" name="nick">
+      <column id="144" parent="20" name="nick">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="136" parent="15" name="qq">
+      <column id="145" parent="20" name="qq">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="137" parent="15" name="wx">
+      <column id="146" parent="20" name="wx">
         <data-type>varchar(255)|0</data-type>
       </column>
-      <column id="138" parent="15" name="set_time">
+      <column id="147" parent="20" name="set_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <key id="139" parent="15" name="PRIMARY">
+      <column id="148" parent="20" name="money">
+        <data-type>decimal(10)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="149" parent="20" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="140" parent="16" name="id">
+      <column id="150" parent="21" name="id">
         <mandatory>1</mandatory>
         <data-type>bigint(20)|0</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="141" parent="16" name="code">
+      <column id="151" parent="21" name="code">
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="142" parent="16" name="name">
+      <column id="152" parent="21" name="name">
         <data-type>varchar(200)|0</data-type>
       </column>
-      <column id="143" parent="16" name="url">
+      <column id="153" parent="21" name="url">
         <data-type>varchar(1000)|0</data-type>
       </column>
-      <column id="144" parent="16" name="content">
+      <column id="154" parent="21" name="content">
         <data-type>text|0</data-type>
       </column>
-      <column id="145" parent="16" name="set_time">
+      <column id="155" parent="21" name="set_time">
         <data-type>timestamp|0</data-type>
       </column>
-      <key id="146" parent="16" name="PRIMARY">
+      <key id="156" parent="21" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="157" parent="22" name="id">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="158" parent="22" name="bank">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="159" parent="22" name="number">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="160" parent="22" name="name">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="161" parent="22" name="home">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <column id="162" parent="22" name="user_id">
+        <data-type>bigint(20)|0</data-type>
+      </column>
+      <column id="163" parent="22" name="set_time">
+        <data-type>timestamp|0</data-type>
+      </column>
+      <key id="164" parent="22" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

@@ -1,13 +1,17 @@
 package com.elangzhi.ssm.controller.admin;
 
+import com.elangzhi.generator.util.GenUtil;
 import com.elangzhi.ssm.controller.AdminBaseController;
 import com.elangzhi.ssm.controller.json.Tip;
+import com.elangzhi.ssm.controller.util.ParamMap;
 import com.elangzhi.ssm.model.Account;
 import com.elangzhi.ssm.model.Admin;
 import com.elangzhi.ssm.services.AccountService;
 import com.elangzhi.ssm.services.AdminService;
 import com.elangzhi.ssm.tools.Const;
 import com.elangzhi.ssm.tools.ImageHelper;
+import com.elangzhi.ssm.tools.UUIDFactory;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +34,20 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class AdminController extends AdminBaseController<Admin> {
+
+    @RequestMapping(value="/addReferee")
+    public ModelAndView addReferee(ModelMap model) throws Exception {
+        model.put("longId", UUIDFactory.getLongId());
+        return new ModelAndView("admin/referee/add",model);
+    }
+
+    @RequestMapping(value="/listByType")
+    public ModelAndView listByType(HttpServletRequest request,Integer page,Integer size){
+        ParamMap paramMap = new ParamMap(request);
+        PageInfo<Admin> pageInfo =  adminService.listByParam(paramMap,page,size);
+        paramMap.put("pageInfo",pageInfo);
+        return new ModelAndView("admin/referee/list",paramMap);
+    }
 
     /**
      * 携带信息跳转到修改头像页面
@@ -124,7 +142,7 @@ public class AdminController extends AdminBaseController<Admin> {
             account.setPassword(admin.getPassword());
             account.setInfoId(admin.getId());
             account.setStatus(1);
-            account.setType(1);
+
 
             admin.setSetTime(new Date());
             admin.setName(admin.getUserName());

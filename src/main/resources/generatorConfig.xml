@@ -46,7 +46,7 @@
         <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.elangzhi.ssm.dao" targetProject="src/main/java"/>-->
 
 
-        <table tableName="t_record" enableCountByExample="false"
+        <table tableName="t_bank_card" enableCountByExample="false"
                             enableUpdateByExample="false"
                             enableDeleteByExample="false"
                             enableSelectByExample="false"

@@ -35,7 +35,6 @@ public class AppTargetController {
 
     /**
      * 提交挑战信息并支付
-     * @param target 挑战信息
      * @param supervise 监督员id
      * @param session session
      * @return 挑战信息
@@ -46,13 +45,37 @@ public class AppTargetController {
     @ResponseBody
     @ApiOperation(value = "提交挑战",  notes = "发起挑战")
     public Tip<Target> submit(
-            @ApiParam(name = "target",value = "提交 title/content/keep/price")
-            @RequestBody Target target,
+
+            @ApiParam(name = "title",value = "标题")
+            @RequestParam String title,
+            @ApiParam(name = "content",value = "内容")
+            @RequestParam String content,
+            @ApiParam(name = "tag",value = "标签")
+            @RequestParam String tag,
+            @ApiParam(name = "keep",value = "保持天数")
+            @RequestParam Integer keep,
+            @ApiParam(name = "price",value = "保证金")
+            @RequestParam Long price,
             @ApiParam(name = "supervise",value = "监督员id，用英文半角逗号拼接，不能少于10个")
             @RequestParam String supervise,
             @ApiIgnore HttpSession session
     ){
         try {
+            Target target = new Target();
+            //初始化挑战
+            target.setId(UUIDFactory.getLongId());
+            target.setSetTime(new Date());
+            target.setType(1);
+            target.setStatus(1);
+            target.setOpinion(2);
+            //填充参数
+            target.setTitle(title);
+            target.setContent(content);
+            target.setTag(tag);
+            target.setKeep(keep);
+            target.setPrice(price);
+
+            //判断余额，添加用户
             long value = Math.abs(target.getPrice());
             User user = (User)session.getAttribute(Const.USER);
             //验证余额
@@ -60,14 +83,9 @@ public class AppTargetController {
             if(status == 2){
                 return new Tip<>(2);
             }
-            //初始化挑战
-            target.setId(UUIDFactory.getLongId());
-            target.setSetTime(new Date());
-            target.setType(1);
-            target.setStatus(1);
-            target.setOpinion(2);
             target.setUserId(user.getId());
 
+            //添加监督员
             for(String s : supervise.split(",")){
                 TargetSupervise ts = new TargetSupervise();
                 ts.setId(UUIDFactory.getLongId());

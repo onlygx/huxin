@@ -176,12 +176,31 @@ public class AdminBaseController<T> {
      * @throws Exception 获取实体列表失败
      */
     @RequestMapping(value="/list")
+    public ModelAndView list(HttpServletRequest request,T t,Integer page,Integer size) throws Exception {
+        if(page == null || page == 0){
+            page = 1;
+            size = projectConfig.getPageSize();
+        }
+        ParamMap paramMap = new ParamMap(request);
+        PageInfo<T> pageInfo =  baseService.list(paramMap,page,size,t.getClass());
+        paramMap.put("pageInfo",pageInfo);
+        return new ModelAndView("admin/"+ GenUtil.LowStr(t.getClass().getSimpleName()) +"/list",paramMap);
+    }
+
+    /**
+     * 获取列表 分页
+     * 默认第一页，每页指定行数
+     * @param request 请求参数
+     * @return 实体列表
+     * @throws Exception 获取实体列表失败
+     */
+/*    @RequestMapping(value="/list")
     public ModelAndView list(HttpServletRequest request,T t) throws Exception {
         ParamMap paramMap = new ParamMap(request);
         PageInfo<T> pageInfo =  baseService.list(paramMap,1,projectConfig.getPageSize(),t.getClass());
         paramMap.put("pageInfo",pageInfo);
         return new ModelAndView("admin/"+ GenUtil.LowStr(t.getClass().getSimpleName()) +"/list",paramMap);
-    }
+    }*/
 
     /**
      * 获取列表 分页

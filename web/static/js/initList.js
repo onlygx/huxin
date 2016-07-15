@@ -98,13 +98,9 @@ function getPaginatorOption(_param,_formParam){
             }
         },
         onPageClicked: function (event, originalEvent, type, page) {
-            var url = _param.url + "/" + page ;
-
-            if(pageSize != 10){
-                url += "/" + pageSize ;
-            }
-
-            tools.post(url,_formParam,function(data){
+            _formParam["page"] = page;
+            _formParam["size"] = _param.pageSize;
+            tools.post(_param.url,_formParam,function(data){
                 tools.setMain(data);
             });
         }

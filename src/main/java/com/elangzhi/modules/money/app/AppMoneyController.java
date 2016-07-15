@@ -33,10 +33,10 @@ import java.util.Map;
 @RequestMapping("/app/money")
 public class AppMoneyController {
 
-    @RequestMapping(value = "/addByZFB", method = RequestMethod.POST)
+    @RequestMapping(value = "/addCash", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "充值",  notes = "充值到钱包")
-    public Tip<Money> addByZFB(
+    public Tip<Money> addCash(
             @ApiIgnore HttpSession session,
             @ApiParam(name = "money",value = "金额")
             @RequestParam Long money){
@@ -57,12 +57,14 @@ public class AppMoneyController {
     public Tip<String> outCash(
                               @ApiIgnore HttpSession session,
                               @ApiParam(name = "money",value = "金额")
-                              @RequestParam Long money
+                              @RequestParam Long money,
+                               @ApiParam(name = "bankCardId",value = "提现银行卡ID")
+                              @RequestParam Long bankCardId
     ){
         User user = (User) session.getAttribute(Const.USER);
         long value = Math.abs(money);
         try {
-            int status = moneyService.insertByType(user.getId(),2,-value,user.getId());
+            int status = moneyService.insertByType(user.getId(),2,-value,bankCardId);
             if(status == 1){
                 return new Tip<>();
             }else{

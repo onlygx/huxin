@@ -1,9 +1,13 @@
 package com.elangzhi.ssm.controller.power;
 
 import com.elangzhi.ssm.controller.AdminBaseController;
+import com.elangzhi.ssm.controller.json.Tip;
 import com.elangzhi.ssm.controller.util.ParamMap;
 import com.elangzhi.ssm.model.Power;
+import com.elangzhi.ssm.model.RolePower;
 import com.elangzhi.ssm.services.PowerService;
+import com.elangzhi.ssm.services.RolePowerService;
+import com.elangzhi.ssm.tools.UUIDFactory;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,6 +27,19 @@ import java.util.List;
 @Controller
 @RequestMapping("/power")
 public class PowerController extends AdminBaseController<Power> {
+
+    @Override
+    public Tip save(Power power) throws Exception {
+
+        RolePower rolePower = new RolePower();
+        rolePower.setId(UUIDFactory.getLongId());
+        rolePower.setPowerId(power.getId());
+        rolePower.setRoleId(888888l);
+        rolePowerService.insert(rolePower);
+
+        return super.save(power);
+    }
+
 
     /**
      * 获取全部权限，主要用于权限父类选择
@@ -51,6 +68,10 @@ public class PowerController extends AdminBaseController<Power> {
 
 
     //---------------------------------- property ------------------------------------------
+
     @Resource
     PowerService powerService;
+
+    @Resource
+    private RolePowerService rolePowerService;
 }

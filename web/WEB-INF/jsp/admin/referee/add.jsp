@@ -4,8 +4,8 @@
 <div class="portlet light bg-inverse">
 	<div class="portlet-title">
 		<div class="caption">
-			<span class="caption-subject font-red-sunglo bold uppercase">管理员添加</span>
-			<span class="caption-helper">添加一个权限为空的管理员（只能看主页），记得手动授权</span>
+			<span class="caption-subject font-red-sunglo bold uppercase">裁判添加</span>
+			<span class="caption-helper">添加一个裁判</span>
 		</div>
 	</div>
 	<div class="portlet-body form">
@@ -21,7 +21,7 @@
 						<input type="text" class="form-control" required minlength="5" name="userName" placeholder="用户名">
 						<input type="hidden" name="head" value="/images/account/default_head.jpg">
 						<input type="hidden" name="id" value="${longId}">
-						<input type="hidden" name="type" value="1">
+						<input type="hidden" name="type" value="2">
 					</div>
 				</div>
 			</div>

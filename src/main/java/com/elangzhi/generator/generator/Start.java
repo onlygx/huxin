@@ -10,7 +10,7 @@ public class Start {
 
     public static void main(String[] args) {
 
-        new ModuleConfig("时间轴",Record.class).startGenerator();
+        new ModuleConfig("提现银行卡",BankCard.class).startGenerator();
 
     }
 }

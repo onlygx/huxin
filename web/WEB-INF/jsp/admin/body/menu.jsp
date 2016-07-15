@@ -74,7 +74,7 @@
 				</li>
 			</c:forEach>
 			
-			<li class="open">
+			<li class="open hide">
 				<a href="javascript:;">
 				<i class="icon-cup"></i>
 				<span class="title">hash 传参测试</span>

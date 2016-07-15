@@ -1,5 +1,6 @@
 package com.elangzhi.ssm.services;
 
+import com.elangzhi.ssm.controller.util.ParamMap;
 import com.elangzhi.ssm.dao.AdminDao;
 import com.elangzhi.ssm.model.Admin;
 import com.github.pagehelper.PageInfo;
@@ -93,4 +94,12 @@ public class AdminService extends BaseService<Admin> {
     }
 
 
+    public PageInfo<Admin> listByParam(ParamMap paramMap, Integer page, Integer size) {
+        try {
+            return adminDao.listByParam(paramMap,page,size);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

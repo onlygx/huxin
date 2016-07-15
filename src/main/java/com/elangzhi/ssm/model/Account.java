@@ -11,6 +11,10 @@ public class Account extends BaseModel {
 
     private String password;
 
+    /**
+     * 1,管理员
+     * 2，裁判
+     */
     private Integer type;
 
     private Integer status;
