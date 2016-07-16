@@ -66,6 +66,7 @@
         select a.*
         from t_record a
         where 1=1
+        order by a.set_time desc
     </select>
 
     <!-- 查询列表,根据用户id -->
@@ -74,6 +75,7 @@
         from t_record a
         where 1=1
         and a.user_id = #{userId}
+        order by a.set_time desc
     </select>
 
     <!-- 查询列表，根据挑战id -->
@@ -82,6 +84,7 @@
         from t_record a
         where 1=1
         and a.target_id = #{targetId}
+        order by a.set_time desc
     </select>
 
 

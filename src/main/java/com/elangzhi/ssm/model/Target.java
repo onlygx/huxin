@@ -29,6 +29,11 @@ public class Target extends BaseModel {
     /**
      * 结束时间
      */
+    private Date endTime;
+
+    /**
+     * 结束时间
+     */
     private Date finishTime;
 
     /**
@@ -82,6 +87,24 @@ public class Target extends BaseModel {
      */
     private String tag;
 
+
+    /**
+     * 用来给Objective-C语言做适配
+     */
+    private String stringId;
+
+    public String getStringId() {
+        if(id != null){
+            return id.toString();
+        }
+        return "";
+    }
+
+    public void setStringId(String stringId) {
+        this.id = Long.parseLong(stringId);
+    }
+
+
     //监督员
     private List<TargetSupervise> superviseList;
     private User user;
@@ -102,6 +125,15 @@ public class Target extends BaseModel {
 
     public Target() {
         super();
+    }
+
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public User getUser() {

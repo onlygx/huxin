@@ -99,4 +99,7 @@ public class UserDao extends LzDao<User> {
         return list("UserMapper.list",map,new RowBounds(page,size));
     }
 
+    public List<User> listTuiJian() throws Exception {
+        return arrayList("UserMapper.listTuiJian");
+    }
 }

@@ -137,4 +137,12 @@ public class UserService extends BaseService<User> {
     }
 
 
+    public List<User> listTuiJian() {
+        try {
+            return userDao.listTuiJian();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

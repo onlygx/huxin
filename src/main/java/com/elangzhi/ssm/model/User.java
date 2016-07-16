@@ -89,6 +89,22 @@ public class User extends BaseModel {
 
     private Date setTime;
 
+
+    /**
+     * 用来给Objective-C语言做适配
+     */
+    private String stringId;
+
+    public String getStringId() {
+        if(id != null){
+            return id.toString();
+        }
+        return "";
+    }
+
+    public void setStringId(String stringId) {
+        this.id = Long.parseLong(stringId);
+    }
     public User(Long id, String userName, String password, Integer type, Integer status, String intro, String phone, String province, String city, String district, String address, String sex, String head, String nick, String qq, String wx, Date setTime,Long money) {
         this.id = id;
         this.userName = userName;

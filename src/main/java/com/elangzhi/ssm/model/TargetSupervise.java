@@ -35,6 +35,21 @@ public class TargetSupervise extends BaseModel {
 
 
 
+    /**
+     * 用来给Objective-C语言做适配
+     */
+    private String stringId;
+
+    public String getStringId() {
+        if(id != null){
+            return id.toString();
+        }
+        return "";
+    }
+
+    public void setStringId(String stringId) {
+        this.id = Long.parseLong(stringId);
+    }
     public TargetSupervise(Long id, Long userId, Integer opinion, String intro, Long targetId) {
         this.id = id;
         this.userId = userId;

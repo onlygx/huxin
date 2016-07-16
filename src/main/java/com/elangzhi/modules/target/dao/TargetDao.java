@@ -90,23 +90,13 @@ public class TargetDao extends LzDao<Target> {
         return list("TargetMapper.list",map,new RowBounds(page,size));
     }
 
-    /**
-     * 获取用户挑战列表
-     * @param userId 用户id
-     * @param page 页码
-     * @param size 每页大小
-     * @return 用户挑战列表
-     * @throws Exception 获取用户挑战列表异常
-     */
-    public PageInfo<Target> listByUserId(Long userId,int page,int size) throws Exception {
-        return list("TargetMapper.listByUserId",userId,new RowBounds(page,size));
+
+    public PageInfo<Target> listBySupervise(Map<String,String> param, Integer page, Integer size) throws Exception{
+        return list("TargetMapper.listBySupervise",param,new RowBounds(page,size));
     }
 
-    public PageInfo<Target> listBySupervise(Long userId, Integer page, Integer size) throws Exception{
-        return list("TargetMapper.listBySupervise",userId,new RowBounds(page,size));
-    }
 
-    public PageInfo<Target> listByStatus(Integer status, Integer page, Integer size) throws Exception{
-        return list("TargetMapper.listByStatus",status,new RowBounds(page,size));
+    public PageInfo<Target> listByTarget(Target target, Integer page, Integer size) throws Exception {
+        return list("TargetMapper.listByTarget",target,new RowBounds(page,size));
     }
 }

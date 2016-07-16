@@ -31,6 +31,23 @@ public class Money extends BaseModel {
      */
     private Integer status;
 
+
+    /**
+     * 用来给Objective-C语言做适配
+     */
+    private String stringId;
+
+    public String getStringId() {
+        if(id != null){
+            return id.toString();
+        }
+        return "";
+    }
+
+    public void setStringId(String stringId) {
+        this.id = Long.parseLong(stringId);
+    }
+
     public Money(Long id, Long money, String intro, Long userId, Integer type, Long infoId, Date setTime) {
         this.id = id;
         this.money = money;

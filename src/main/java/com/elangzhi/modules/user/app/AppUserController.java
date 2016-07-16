@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 /**
 * 用户 客户端 Controller
@@ -29,6 +30,20 @@ import java.util.Date;
 @RequestMapping("/app/user")
 @Api(value = "用户", description = "登录注册、资料修改、头像修改、密码修改")
 public class AppUserController {
+
+
+    /**
+     * 推荐用户
+     * 新注册
+     * @return 用户列表
+     */
+    @RequestMapping(value = "/tuijian", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "获取推荐用户",  notes = "获取推荐用户")
+    public Tip<List<User>> tuijian(){
+        List<User> userList = userService.listTuiJian();
+        return new Tip<>(userList);
+    }
 
     /**
      * 根据用户id获取某用户的信息

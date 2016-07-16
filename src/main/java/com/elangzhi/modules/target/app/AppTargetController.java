@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
 * 挑战 客户端 Controller
@@ -94,6 +93,11 @@ public class AppTargetController {
                 ts.setTargetId(target.getId());
                 targetSuperviseService.insert(ts);
             }
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(target.getSetTime());
+            cal.add(Calendar.DATE, keep);
+            target.setEndTime(cal.getTime());
             targetService.insert(target);
             return new Tip<>();
         } catch (Exception e) {
@@ -139,10 +143,12 @@ public class AppTargetController {
             @RequestParam Integer size
     ){
         PageInfo<Target> targetPageInfo = null;
+        Target target = new Target();
+        target.setStatus(status);
         try {
-            targetPageInfo = targetService.listByStatus(status,page,size);
-            for(Target target : targetPageInfo.getList()){
-                target.setUser(userService.selectById(target.getUserId()));
+            targetPageInfo = targetService.listByTarget(target,page,size);
+            for(Target t : targetPageInfo.getList()){
+                t.setUser(userService.selectById(t.getUserId()));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,15 +161,45 @@ public class AppTargetController {
     @ApiOperation(value = "我的挑战列表",  notes = "获取我的挑战列表（分页）")
     public Tip<PageInfo<Target>> listByMy(
             @ApiIgnore HttpSession session,
+            @ApiParam(name = "status",value = "状态,1 挑战中（会获取status为1和2的）,3 已完成")
+            @RequestParam Integer status,
             @ApiParam(name = "page",value = "第几页")
             @RequestParam Integer page,
             @ApiParam(name = "size",value = "每页大小")
             @RequestParam Integer size
     ){
         User user = (User) session.getAttribute(Const.USER);
-        PageInfo<Target> targetPageInfo = targetService.listByUserId(user.getId(),page,size);
-        for(Target target : targetPageInfo.getList()){
-            target.setUser(userService.selectById(target.getUserId()));
+        Target target = new Target();
+        target.setUserId(user.getId());
+        target.setStatus(status);
+        PageInfo<Target> targetPageInfo = targetService.listByTarget(target,page,size);
+        for(Target t : targetPageInfo.getList()){
+            t.setUser(userService.selectById( t.getUserId()));
+        }
+        return new Tip<>(targetPageInfo);
+    }
+
+    @RequestMapping(value = "/listByUserStatus", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "用户的挑战列表",  notes = "获取某用户的挑战列表（分页）")
+    public Tip<PageInfo<Target>> listByUserStatus(
+            @ApiIgnore HttpSession session,
+            @ApiParam(name = "userId",value = "用户id")
+            @RequestParam Long userId,
+            @ApiParam(name = "status",value = "状态,1 挑战中（会获取status为1和2的）,3 已完成")
+            @RequestParam Integer status,
+            @ApiParam(name = "page",value = "第几页")
+            @RequestParam Integer page,
+            @ApiParam(name = "size",value = "每页大小")
+            @RequestParam Integer size
+    ){
+
+        Target target = new Target();
+        target.setUserId(userId);
+        target.setStatus(status);
+        PageInfo<Target> targetPageInfo = targetService.listByTarget(target,page,size);
+        for(Target t : targetPageInfo.getList()){
+            t.setUser(userService.selectById( t.getUserId()));
         }
         return new Tip<>(targetPageInfo);
     }
@@ -173,14 +209,19 @@ public class AppTargetController {
     @ApiOperation(value = "我监督的",  notes = "我监督的挑战列表（分页）")
     public Tip<PageInfo<Target>> listSuperviseByMy(
                                          @ApiIgnore HttpSession session,
+                                         @ApiParam(name = "status",value = "状态,1 挑战中（会获取status为1和2的）,3 已完成")
+                                         @RequestParam Integer status,
                                          @ApiParam(name = "page",value = "第几页")
                                          @RequestParam Integer page,
                                          @ApiParam(name = "size",value = "每页大小")
                                          @RequestParam Integer size){
         User user = (User) session.getAttribute(Const.USER);
-        PageInfo<Target> targetPageInfo = targetService.listBySupervise(user.getId(),page,size);
-        for(Target target : targetPageInfo.getList()){
-            target.setUser(userService.selectById(target.getUserId()));
+        Map<String,String> param = new HashMap<>();
+        param.put("status",status.toString());
+        param.put("userId",user.getId().toString());
+        PageInfo<Target> targetPageInfo = targetService.listBySupervise(param,page,size);
+        for(Target t : targetPageInfo.getList()){
+            t.setUser(userService.selectById(t.getUserId()));
         }
         return new Tip<>(targetPageInfo);
     }

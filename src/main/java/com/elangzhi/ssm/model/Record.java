@@ -17,6 +17,24 @@ public class Record extends BaseModel {
 
     private String content;
 
+
+    /**
+     * 用来给Objective-C语言做适配
+     */
+    private String stringId;
+
+    public String getStringId() {
+        if(id != null){
+            return id.toString();
+        }
+        return "";
+    }
+
+    public void setStringId(String stringId) {
+        this.id = Long.parseLong(stringId);
+    }
+
+
     public Record(Long id, String title, Long userId, Date setTime, Long targetId, String content) {
         this.id = id;
         this.title = title;

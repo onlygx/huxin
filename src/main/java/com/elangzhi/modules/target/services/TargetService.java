@@ -93,32 +93,22 @@ public class TargetService extends BaseService<Target> {
         return targetDao.list(map,page,size);
     }
 
-    /**
-     * 获取用户挑战列表
-     * @param userId 用户id
-     * @return 用户挑战列表
-     */
-    public PageInfo<Target> listByUserId(Long userId,int page,int size) {
+
+
+    public PageInfo<Target> listBySupervise(Map<String,String> param, Integer page, Integer size) {
         try {
-            return targetDao.listByUserId(userId,page,size);
+            return targetDao.listBySupervise(param,page,size);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public PageInfo<Target> listBySupervise(Long userId, Integer page, Integer size) {
-        try {
-            return targetDao.listBySupervise(userId,page,size);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
-    public PageInfo<Target> listByStatus(Integer status, Integer page, Integer size) {
+
+    public PageInfo<Target> listByTarget(Target target, Integer page, Integer size) {
         try {
-            return targetDao.listByStatus(status,page,size);
+            return targetDao.listByTarget(target,page,size);
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -37,6 +37,22 @@ public class BankCard extends BaseModel{
      */
     private Date setTime;
 
+    /**
+     * 用来给Objective-C语言做适配
+     */
+    private String stringId;
+
+    public String getStringId() {
+        if(id != null){
+            return id.toString();
+        }
+        return "";
+    }
+
+    public void setStringId(String stringId) {
+        this.id = Long.parseLong(stringId);
+    }
+
     public BankCard(Long id, String bank, String number, String name, String home, Long userId, Date setTime) {
         this.id = id;
         this.bank = bank;
@@ -106,4 +122,6 @@ public class BankCard extends BaseModel{
     public void setSetTime(Date setTime) {
         this.setTime = setTime;
     }
+
+
 }

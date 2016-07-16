@@ -123,4 +123,10 @@
         </if>
     </select>
 
+    <select id="listTuiJian" resultType="com.elangzhi.ssm.model.User" >
+        select a.*
+        from t_user a
+        where 1=1
+        order by set_time desc
+    </select>
 </mapper>

@@ -34,8 +34,8 @@
 
     <!-- 插入数据 -->
     <insert id="insert" parameterType="com.elangzhi.ssm.model.Target" >
-        insert into t_target (id,title,user_id,set_time,finish_time,referee_id,keep,price,status,type,opinion,content,tag)
-        values (#{id},#{title},#{userId},#{setTime},#{finishTime},#{refereeId},#{keep},#{price},#{status},#{type},#{opinion},#{content},#{tag})
+        insert into t_target (id,title,user_id,set_time,end_time,finish_time,referee_id,keep,price,status,type,opinion,content,tag)
+        values (#{id},#{title},#{userId},#{setTime},#{endTime},#{finishTime},#{refereeId},#{keep},#{price},#{status},#{type},#{opinion},#{content},#{tag})
     </insert>
 
     <!-- 根据 id 更新数据 -->
@@ -50,6 +50,9 @@
             </if>
             <if test="setTime != null" >
                 set_time = #{setTime},
+            </if>
+            <if test="endTime != null" >
+                end_time = #{endTime},
             </if>
             <if test="finishTime != null" >
                 finish_time = #{finishTime},
@@ -82,36 +85,54 @@
         where id = #{id}
     </update>
 
-    <!-- 获取我的挑战 -->
-    <select id="listByUserId" resultType="com.elangzhi.ssm.model.Target" parameterType="long">
-        select *
-        from t_target
+
+    <select id="list" resultType="com.elangzhi.ssm.model.Target" parameterType="map">
+        select a.*
+        from t_target a
         where 1=1
-        and user_id = #{userId}
+    </select>
+
+
+    <!-- 获取我的挑战 -->
+    <select id="listByTarget" resultType="com.elangzhi.ssm.model.Target" parameterType="com.elangzhi.ssm.model.Target">
+        select a.*,to_days(now())-to_days(a.set_time) nowKeep
+        from t_target a
+        where 1=1
+        <if test="status != null ">
+            <if test="status == 1 ">
+                and a.status = 1
+                or a.status = 2
+            </if>
+            <if test="status == 3 ">
+                and a.status = 3
+            </if>
+        </if>
+
+        <if test="userId != null" >
+            and a.user_id = #{userId}
+        </if>
+        order by a.set_time desc
     </select>
 
 
     <!-- 获取我监督的挑战 -->
     <select id="listBySupervise" resultType="com.elangzhi.ssm.model.Target" parameterType="long">
-        select a.*
+        select a.*,to_days(now())-to_days(a.set_time) nowKeep
         from t_target a
             left join t_target_supervise b on a.id = b.target_id
         where b.user_id = #{userId}
-    </select>
 
+        <if test="status != null ">
+            <if test="status == 1 ">
+                and a.status = 1
+                or a.status = 2
+            </if>
+            <if test="status == 3 ">
+                and a.status = 3
+            </if>
+        </if>
 
-    <!-- 挑战列表 -->
-    <select id="listByStatus" resultType="com.elangzhi.ssm.model.Target" parameterType="int">
-        select a.*
-        from t_target a
-        where 1=1
-        <if test="status == 1 ">
-            and status = 1
-            or status = 2
-        </if>
-        <if test="status != 1 ">
-            and status = 3
-        </if>
+        order by a.set_time desc
     </select>
 
 
