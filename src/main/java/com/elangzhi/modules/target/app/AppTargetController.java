@@ -54,7 +54,7 @@ public class AppTargetController {
             @ApiParam(name = "keep",value = "保持天数")
             @RequestParam Integer keep,
             @ApiParam(name = "price",value = "保证金")
-            @RequestParam Long price,
+            @RequestParam Double price,
             @ApiParam(name = "supervise",value = "监督员id，用英文半角逗号拼接，不能少于10个")
             @RequestParam String supervise,
             @ApiIgnore HttpSession session
@@ -75,7 +75,7 @@ public class AppTargetController {
             target.setPrice(price);
 
             //判断余额，添加用户
-            long value = Math.abs(target.getPrice());
+            Double value = Math.abs(target.getPrice());
             User user = (User)session.getAttribute(Const.USER);
             //验证余额
             int status = moneyService.insertByType(user.getId(),3,-value,target.getId());
@@ -86,9 +86,23 @@ public class AppTargetController {
 
             //添加监督员
             for(String s : supervise.split(",")){
+                //如果传过来的是手机号，就取出id，如果是id，就直接使用
+                Long sUserId=Long.valueOf("0");
+                if(s.length() < 15){
+                    if(!s.equals("")){
+                        User suser = userService.selectByUserName(s);
+                        if(suser!=null){
+                            sUserId = suser.getId();
+                        }
+                    }
+                }else{
+                    sUserId = Long.valueOf(s);
+                }
+
+
                 TargetSupervise ts = new TargetSupervise();
                 ts.setId(UUIDFactory.getLongId());
-                ts.setUserId(Long.valueOf(s));
+                ts.setUserId(sUserId);
                 ts.setOpinion(2);
                 ts.setTargetId(target.getId());
                 targetSuperviseService.insert(ts);

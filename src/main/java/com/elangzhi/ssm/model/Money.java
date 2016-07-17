@@ -7,7 +7,7 @@ import java.util.Date;
 public class Money extends BaseModel {
     private Long id;
 
-    private Long money;
+    private Double money;
 
     private String intro;
 
@@ -48,7 +48,7 @@ public class Money extends BaseModel {
         this.id = Long.parseLong(stringId);
     }
 
-    public Money(Long id, Long money, String intro, Long userId, Integer type, Long infoId, Date setTime) {
+    public Money(Long id, Double money, String intro, Long userId, Integer type, Long infoId, Date setTime) {
         this.id = id;
         this.money = money;
         this.intro = intro;
@@ -78,11 +78,11 @@ public class Money extends BaseModel {
         this.id = id;
     }
 
-    public Long getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(Long money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 

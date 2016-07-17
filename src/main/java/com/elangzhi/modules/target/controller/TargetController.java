@@ -54,15 +54,21 @@ public class TargetController extends AdminBaseController<Target> {
     }
 
     private void checkOpinion(Target target) {
-        if(target.getOpinion() == 1){
-            try {
+        try {
+            if(target.getOpinion() == 1){
+
                 moneyService.insertByType(target.getUserId(),5,target.getPrice(),target.getId());
-            } catch (Exception e) {
-                e.printStackTrace();
+
+            }else if(target.getOpinion() == 0){
+
+                    List<TargetSupervise> tsList = targetSuperviseService.listByTargetId(target.getId());
+                    Double price = target.getPrice()/tsList.size();
+                    for(TargetSupervise ts : tsList){
+                        moneyService.insertByType(ts.getUserId(),4,price,target.getId());
+                    }
             }
-        }else if(target.getOpinion() == 0){
-                List<TargetSupervise> tsList = targetSuperviseService.listByTargetId(target.getId());
-                //TODO
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

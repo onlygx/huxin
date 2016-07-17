@@ -51,7 +51,7 @@ public class Target extends BaseModel {
     /**
      * 押金
      */
-    private Long price;
+    private Double price;
 
     /**
      * 状态
@@ -111,7 +111,7 @@ public class Target extends BaseModel {
     private List<TargetSupervise> superviseList;
     private User user;
 
-    public Target(Long id, String title, Long userId, Date setTime, String refereeId, Integer keep, Long price, Integer status, Integer type, Integer opinion, String content) {
+    public Target(Long id, String title, Long userId, Date setTime, String refereeId, Integer keep, Double price, Integer status, Integer type, Integer opinion, String content) {
         this.id = id;
         this.title = title;
         this.userId = userId;
@@ -249,11 +249,11 @@ public class Target extends BaseModel {
         this.keep = keep;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

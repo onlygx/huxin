@@ -37,6 +37,13 @@ public class OpenIMService {
     @Value("#{projectConfigurer['openIm.secret']}")
     private String openImSecret;
 
+    public static void main(String[] args) {
+        try {
+            new OpenIMService().getUser("15615410811");
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 更改头像地址
@@ -77,7 +84,8 @@ public class OpenIMService {
      * @throws ApiException 获取失败
      */
     public void getUser(String userName) throws ApiException {
-        TaobaoClient client = new DefaultTaobaoClient(openImUrl, openImAppKey, openImSecret);
+        TaobaoClient client = new DefaultTaobaoClient("http://gw.api.taobao.com/router/rest",
+                "23398098", "3ae9da70fb996bb62b4afdc26a7df31e");
         OpenimUsersGetRequest req = new OpenimUsersGetRequest();
         req.setUserids(userName);
         OpenimUsersGetResponse response = client.execute(req);

@@ -324,7 +324,7 @@ public class AppUserController {
         user.setSetTime(new Date());
         user.setType(1);
         user.setStatus(1);
-        user.setMoney(Long.valueOf("0"));
+        user.setMoney(0.0);
         try {
             userService.insert(user);
             openIMService.addUser(createUserInfo(user));

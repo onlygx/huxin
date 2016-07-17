@@ -85,7 +85,7 @@ public class User extends BaseModel {
      */
     private String wx;
 
-    private Long money;
+    private Double money;
 
     private Date setTime;
 
@@ -108,7 +108,9 @@ public class User extends BaseModel {
     public void setStringId(String stringId) {
         this.id = Long.parseLong(stringId);
     }
-    public User(Long id, String userName, String password, Integer type, Integer status, String intro, String phone, String province, String city, String district, String address, String sex, String head, String nick, String qq, String wx, Date setTime,Long money) {
+    public User(Long id, String userName, String password, Integer type, Integer status, String intro,
+                String phone, String province, String city, String district, String address, String sex,
+                String head, String nick, String qq, String wx, Date setTime,Double money) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -149,11 +151,11 @@ public class User extends BaseModel {
         this.zfb = zfb;
     }
 
-    public Long getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(Long money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 
