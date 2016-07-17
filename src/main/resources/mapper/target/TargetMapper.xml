@@ -13,9 +13,9 @@
 
     <!-- 根据 id 查询所有列 -->
     <select id="selectById" resultType="com.elangzhi.ssm.model.Target" parameterType="long" >
-        select *
-        from t_target
-        where id = #{id}
+        select a.*,to_days(now())-to_days(a.set_time) nowKeep
+        from t_target a
+        where a.id = #{id}
     </select>
 
     <!-- 根据 id 删除 -->

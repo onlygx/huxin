@@ -115,15 +115,39 @@ public class AppTargetController {
         return new Tip(id);
     }*/
 
-    @RequestMapping(value = "/findTargetById", method = RequestMethod.GET)
+    @RequestMapping(value = "/findTargetByIdGet", method = RequestMethod.GET)
     @ResponseBody
-    @ApiOperation(value = "挑战详情",  notes = "根据ID获取挑战详情")
-    public Tip<Target> findTargetById(
+    @ApiOperation(value = "挑战详情",  notes = "根据ID获取挑战详情(Get)")
+    public Tip<Target> findTargetByIdGet(
             @ApiParam(name = "id",value = "挑战id")
             @RequestParam Long id
     ){
         try {
+            System.out.println("Get提交");
+            Target target = targetService.selectById(id);
+            target.setUser(userService.selectById(target.getUserId()));
+            List<TargetSupervise> targetSuperviseList = targetSuperviseService.listByTargetId(id);
+            for(TargetSupervise ts : targetSuperviseList){
+                ts.setUser(userService.selectById(ts.getUserId()));
+            }
+            target.setSuperviseList(targetSuperviseList);
+            return new Tip<>(target);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Tip<>(1);
+        }
+    }
 
+
+    @RequestMapping(value = "/findTargetByIdPost", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "挑战详情",  notes = "根据ID获取挑战详情(Post)")
+    public Tip<Target> findTargetByIdPost(
+            @ApiParam(name = "id",value = "挑战id")
+            @RequestParam Long id
+    ){
+        try {
+            System.out.println("Post提交");
             Target target = targetService.selectById(id);
             target.setUser(userService.selectById(target.getUserId()));
             List<TargetSupervise> targetSuperviseList = targetSuperviseService.listByTargetId(id);

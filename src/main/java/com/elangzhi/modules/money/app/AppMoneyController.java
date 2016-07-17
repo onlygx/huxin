@@ -53,18 +53,19 @@ public class AppMoneyController {
 
     @RequestMapping(value = "/outCash", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "提现",  notes = "提交提现申请，后台处理")
+    @ApiOperation(value = "提现到支付宝",  notes = "提交提现申请，后台处理")
     public Tip<String> outCash(
                               @ApiIgnore HttpSession session,
                               @ApiParam(name = "money",value = "金额")
-                              @RequestParam Long money,
-                               @ApiParam(name = "bankCardId",value = "提现银行卡ID")
-                              @RequestParam Long bankCardId
+                              @RequestParam Long money
     ){
         User user = (User) session.getAttribute(Const.USER);
+        if(user.getZfb() == null || user.getZfb().equals("")){
+            return new Tip<>(3,"请先绑定支付宝！");
+        }
         long value = Math.abs(money);
         try {
-            int status = moneyService.insertByType(user.getId(),2,-value,bankCardId);
+            int status = moneyService.insertByType(user.getId(),2,-value,user.getId());
             if(status == 1){
                 return new Tip<>();
             }else{

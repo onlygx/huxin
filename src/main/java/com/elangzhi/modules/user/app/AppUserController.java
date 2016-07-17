@@ -31,6 +31,26 @@ import java.util.List;
 @Api(value = "用户", description = "登录注册、资料修改、头像修改、密码修改")
 public class AppUserController {
 
+    @RequestMapping(value = "/bindZFB", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "绑定支付宝",  notes = "绑定用户的支付宝")
+    public Tip bindZFB(
+            @ApiParam(name = "zfb",value = "支付宝账号")
+            @RequestParam  String zfb,
+            @ApiIgnore HttpSession session
+    ){
+        User user = (User) session.getAttribute(Const.USER);
+        user.setZfb(zfb);
+        try {
+            userService.updateById(user);
+            session.setAttribute(Const.USER,user);
+            return new Tip();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Tip(1);
+        }
+
+    }
 
     /**
      * 推荐用户
@@ -50,14 +70,37 @@ public class AppUserController {
      * @param id 用户id
      * @return 用户信息
      */
-    @RequestMapping(value = "/findUserById", method = RequestMethod.GET)
+    @RequestMapping(value = "/findUserByIdGet", method = RequestMethod.GET)
     @ResponseBody
-    @ApiOperation(value = "获取用户信息",  notes = "根据用户id获取某用户的信息")
-    public Tip<User> findUserById(
+    @ApiOperation(value = "获取用户信息",  notes = "根据用户id获取某用户的信息(Get)")
+    public Tip<User> findUserByIdGet(
             @ApiParam(name = "id",value = "用户id")
             @RequestParam Long id
     ){
         try {
+            System.out.println("Get提交");
+            User user = userService.selectById(id);
+            return new Tip<>(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Tip<>(1);
+        }
+    }
+
+    /**
+     * 根据用户id获取某用户的信息
+     * @param id 用户id
+     * @return 用户信息
+     */
+    @RequestMapping(value = "/findUserByIdPost", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "获取用户信息",  notes = "根据用户id获取某用户的信息(Post)")
+    public Tip<User> findUserByIdPost(
+            @ApiParam(name = "id",value = "用户id")
+            @RequestParam Long id
+    ){
+        try {
+            System.out.println("Post提交");
             User user = userService.selectById(id);
             return new Tip<>(user);
         } catch (Exception e) {

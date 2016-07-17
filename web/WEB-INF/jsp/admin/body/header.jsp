@@ -4,22 +4,22 @@
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
 		<div class="page-logo">
-			<a href="#module=home">
-				<%--<img src="/static/metronic/layout/img/logo-light.png" alt="logo" class="logo-default">--%>
+		<%--	<a href="#module=home">
+				&lt;%&ndash;<img src="/static/metronic/layout/img/logo-light.png" alt="logo" class="logo-default">&ndash;%&gt;
 				<img src="/images/project/ssmjee.png" style="width: 180px;height: 50px;margin-top: 10px;" alt="logo" class="logo-default" >
-			</a>
-			<%--<a  alt="logo" class="logo-default" href="#module=home" style="margin-top: 23px;font-size: 20px;">后台管理系统</a>--%>
+			</a>--%>
+			<a  alt="logo" class="logo-default" href="#module=home" style="margin-top: 23px;font-size: 20px;">后台管理系统</a>
 			<div class="menu-toggler sidebar-toggler">
 				<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
 			</div>
 		</div>
 		<!-- END LOGO -->
-		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+		<!-- BEGIN RESPONSIVE MENU TOGGLER  -->
 		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
 		</a>
 		<!-- END RESPONSIVE MENU TOGGLER -->
-		<img src="/images/project/admin-gif.jpg" style="width: 60px;height: 60px;margin-top: 5px;" alt="logo" class="logo-default" >
-
+		<%--<img src="/images/project/admin-gif.jpg" style="width: 60px;height: 60px;margin-top: 5px;" alt="logo" class="logo-default" >
+--%>
         <!-- BEGIN PAGE TOP -->
 		<div class="page-top">
 

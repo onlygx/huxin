@@ -15,7 +15,7 @@ public class Money extends BaseModel {
 
     /**
      * 1，充值
-     * 2，提现
+     * 2，提现(支付宝)
      * 3，挑战支付
      * 4，监督员分红
      * 5，挑战成功获得

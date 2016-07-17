@@ -5,7 +5,7 @@
 	<div class="portlet-title">
 		<div class="caption">
 			<span class="caption-subject font-red-sunglo bold uppercase">管理员添加</span>
-			<span class="caption-helper">添加一个权限为空的管理员（只能看主页），记得手动授权</span>
+			<span class="caption-helper">添加一个权限为空的管理员（只能看主页）</span>
 		</div>
 	</div>
 	<div class="portlet-body form">

@@ -89,6 +89,8 @@ public class User extends BaseModel {
 
     private Date setTime;
 
+    private String zfb;
+
 
     /**
      * 用来给Objective-C语言做适配
@@ -128,6 +130,14 @@ public class User extends BaseModel {
 
     public User() {
         super();
+    }
+
+    public String getZfb() {
+        return zfb;
+    }
+
+    public void setZfb(String zfb) {
+        this.zfb = zfb;
     }
 
     public Long getMoney() {

@@ -5,9 +5,12 @@ import com.elangzhi.ssm.controller.AdminBaseController;
 import com.elangzhi.ssm.controller.json.Tip;
 import com.elangzhi.ssm.controller.util.ParamMap;
 import com.elangzhi.ssm.model.Account;
+import com.elangzhi.ssm.model.AccountRole;
 import com.elangzhi.ssm.model.Admin;
+import com.elangzhi.ssm.services.AccountRoleService;
 import com.elangzhi.ssm.services.AccountService;
 import com.elangzhi.ssm.services.AdminService;
+import com.elangzhi.ssm.services.RolePowerService;
 import com.elangzhi.ssm.tools.Const;
 import com.elangzhi.ssm.tools.ImageHelper;
 import com.elangzhi.ssm.tools.UUIDFactory;
@@ -143,6 +146,13 @@ public class AdminController extends AdminBaseController<Admin> {
             account.setInfoId(admin.getId());
             account.setStatus(1);
 
+            if(account.getType() == 2){
+                AccountRole accountRole = new AccountRole();
+                accountRole.setId(UUIDFactory.getLongId());
+                accountRole.setAccountId(account.getId());
+                accountRole.setRoleId(Long.valueOf("3411240225557332612"));
+                accountRoleService.insert(accountRole);
+            }
 
             admin.setSetTime(new Date());
             admin.setName(admin.getUserName());
@@ -157,4 +167,7 @@ public class AdminController extends AdminBaseController<Admin> {
 
     @Resource
     AdminService adminService;
+
+    @Resource
+    private AccountRoleService accountRoleService;
 }
