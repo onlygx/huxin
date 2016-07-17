@@ -62,11 +62,19 @@ public class AppRecordController {
     @ResponseBody
     @ApiOperation(value = "提交动态",  notes = "提交某个挑战下的动态")
     public Tip<Record> submit(
-            @ApiParam(name = "record",value = "提交 title/content/targetId", access = "access")
-            @RequestBody Record record,
+            @ApiParam(name = "title",value = "标题")
+            @RequestParam String title,
+            @ApiParam(name = "content",value = "内容")
+            @RequestParam String content,
+            @ApiParam(name = "targetId",value = "挑战ID")
+            @RequestParam Long targetId,
             @ApiIgnore HttpSession session
     ){
         try {
+            Record record = new Record();
+            record.setTitle(title);
+            record.setContent(content);
+            record.setTargetId(targetId);
             record.setId(UUIDFactory.getLongId());
             record.setSetTime(new Date());
             record.setUserId(((User)session.getAttribute(Const.USER)).getId());

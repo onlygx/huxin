@@ -50,11 +50,11 @@ public class AppUserController {
      * @param id 用户id
      * @return 用户信息
      */
-    @RequestMapping(value = "/findById", method = RequestMethod.POST)
+    @RequestMapping(value = "/findUserById", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "获取用户信息",  notes = "根据用户id获取某用户的信息")
-    public Tip<User> findById(
-            @ApiParam(name = "id",value = "用户id",required = true)
+    public Tip<User> findUserById(
+            @ApiParam(name = "id",value = "用户id")
             @RequestParam Long id
     ){
         try {
@@ -68,7 +68,6 @@ public class AppUserController {
 
     /**
      * 更改用户信息
-     * @param user 用户信息
      *             nick,province,city,district,address,intro
      * @param session session
      * @return 成功状态
@@ -77,18 +76,29 @@ public class AppUserController {
     @ResponseBody
     @ApiOperation(value = "更改资料",  notes = "更改当前登陆用户资料", position = 7)
     public Tip<User> updateUser(
-            @ApiParam(name = "user",value = "可更改的内容有：nick/province/city/district/address/intro",required = true)
-            @RequestBody User user,
+
+            @ApiParam(name = "nick",value = "昵称")
+            @RequestParam String nick,
+            @ApiParam(name = "intro",value = "个性签名")
+            @RequestParam String intro,
+            @ApiParam(name = "province",value = "省份（中文名）")
+            @RequestParam String province,
+            @ApiParam(name = "city",value = "市（中文名）")
+            @RequestParam String city,
+            @ApiParam(name = "district",value = "区（中文名）")
+            @RequestParam String district,
+            @ApiParam(name = "address",value = "地址")
+            @RequestParam String address,
             @ApiIgnore HttpSession session){
 
         try {
             User userData = (User) session.getAttribute(Const.USER);
-            userData.setNick(user.getNick());
-            userData.setProvince(user.getProvince());
-            userData.setCity(user.getCity());
-            userData.setDistrict(user.getDistrict());
-            userData.setAddress(user.getAddress());
-            userData.setIntro(user.getIntro());
+            userData.setNick(nick);
+            userData.setIntro(intro);
+            userData.setProvince(province);
+            userData.setCity(city);
+            userData.setDistrict(district);
+            userData.setAddress(address);
 
             userService.updateById(userData);
             session.setAttribute(Const.USER,userData);

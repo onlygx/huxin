@@ -72,11 +72,15 @@
 
     <!-- 查询列表，分页信息不在此处控制，参数为map，返回实体 -->
     <select id="list" resultType="com.elangzhi.ssm.model.Admin" parameterType="map">
-        select *
-        from t_admin
+        select a.*
+        from t_admin a
+        left join t_account b on a.id = b.info_id
         where 1=1
+        <if test="type != null">
+            and b.type = #{type}
+        </if>
         <if test="name != null">
-            and `name` like CONCAT('%',#{name},'%')
+            and a.`name` like CONCAT('%',#{name},'%')
         </if>
     </select>
 

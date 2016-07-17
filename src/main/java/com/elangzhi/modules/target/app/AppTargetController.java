@@ -99,7 +99,7 @@ public class AppTargetController {
             cal.add(Calendar.DATE, keep);
             target.setEndTime(cal.getTime());
             targetService.insert(target);
-            return new Tip<>();
+            return new Tip<>(target);
         } catch (Exception e) {
             e.printStackTrace();
             return new Tip<>(1);
@@ -107,14 +107,23 @@ public class AppTargetController {
 
     }
 
-    @RequestMapping(value = "/findById", method = RequestMethod.POST)
+/*    @RequestMapping(value = "/findByIdTest", method = RequestMethod.POST)
+    @ResponseBody
+    public Tip<Target> findByIdTest(
+            @RequestParam Long id
+    ){
+        return new Tip(id);
+    }*/
+
+    @RequestMapping(value = "/findTargetById", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "挑战详情",  notes = "根据ID获取挑战详情")
-    public Tip<Target> findById(
+    public Tip<Target> findTargetById(
             @ApiParam(name = "id",value = "挑战id")
             @RequestParam Long id
     ){
         try {
+
             Target target = targetService.selectById(id);
             target.setUser(userService.selectById(target.getUserId()));
             List<TargetSupervise> targetSuperviseList = targetSuperviseService.listByTargetId(id);

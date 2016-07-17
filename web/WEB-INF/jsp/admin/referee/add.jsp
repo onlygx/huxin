@@ -75,7 +75,7 @@ function save(){
 	//加密
 	var pwd = $("input[name='password']").eq(0);
 	if(pwd.val().trim().length == 0){
-		$("#saveForm").valid()
+		$("#saveForm").valid();
 		return;
 	}
 	var md5 = $.md5(pwd.val());

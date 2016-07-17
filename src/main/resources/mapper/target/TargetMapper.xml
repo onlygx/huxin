@@ -98,19 +98,20 @@
         select a.*,to_days(now())-to_days(a.set_time) nowKeep
         from t_target a
         where 1=1
+
+        <if test="userId != null">
+          and a.user_id = #{userId}
+        </if>
+
         <if test="status != null ">
             <if test="status == 1 ">
-                and a.status = 1
-                or a.status = 2
+                and (a.status = 1 or a.status = 2)
             </if>
             <if test="status == 3 ">
                 and a.status = 3
             </if>
         </if>
 
-        <if test="userId != null" >
-            and a.user_id = #{userId}
-        </if>
         order by a.set_time desc
     </select>
 
@@ -124,8 +125,7 @@
 
         <if test="status != null ">
             <if test="status == 1 ">
-                and a.status = 1
-                or a.status = 2
+                and (a.status = 1 or a.status = 2)
             </if>
             <if test="status == 3 ">
                 and a.status = 3

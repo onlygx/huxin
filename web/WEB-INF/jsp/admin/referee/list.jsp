@@ -103,9 +103,7 @@
                 <th>编号</th>
                 <th>姓名</th>
                 <th>邮箱</th>
-                <th>
-                    手机
-                </th>
+                <th>手机</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -139,7 +137,7 @@
 
     // 分页插件参数
     var pageParam = {
-        url: module + "/list",
+        url: module + "/listByType",
         pageSize: ${pageInfo.pageSize},         //每页显示行数 默认10
         currentPage: ${pageInfo.pageNum},   //当前页数
         totalPages: ${pageInfo.pages},      //总页数
@@ -148,7 +146,8 @@
 
     // 条件查询参数
     var formParam = {
-        name: "${name}"
+        name: "${name}",
+        type: "${type}"
     };
 
     $(document).ready(function () {

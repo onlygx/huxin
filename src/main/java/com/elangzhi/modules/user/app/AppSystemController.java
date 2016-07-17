@@ -4,6 +4,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/app/system")
 public class AppSystemController {
 
-    @RequestMapping("about")
+    @RequestMapping(value = "about",method = RequestMethod.GET)
     @ApiOperation(value = "关于我们",  notes = "获取关于我们web页面")
     public ModelAndView about(){
         return new ModelAndView("web/about");
