@@ -13,7 +13,7 @@
 
     <!-- 根据 id 查询所有列 -->
     <select id="selectById" resultType="com.elangzhi.ssm.model.Target" parameterType="long" >
-        select a.*,to_days(now())-to_days(a.set_time) nowKeep
+        select a.*,if(to_days(now())-to_days(a.set_time)&lt;=a.keep,to_days(now())-to_days(a.set_time),a.keep) nowKeep
         from t_target a
         where a.id = #{id}
     </select>
@@ -87,7 +87,7 @@
 
 
     <select id="list" resultType="com.elangzhi.ssm.model.Target" parameterType="map">
-        select a.*,to_days(now())-to_days(a.set_time) nowKeep,b.name refereeName
+        select a.*,if(to_days(now())-to_days(a.set_time)&lt;=a.keep,to_days(now())-to_days(a.set_time),a.keep) nowKeep,b.name refereeName
         from t_target a
         left join t_admin b on a.referee_id = b.id
         where 1=1
@@ -103,7 +103,7 @@
 
     <!-- 获取我的挑战 -->
     <select id="listByTarget" resultType="com.elangzhi.ssm.model.Target" parameterType="com.elangzhi.ssm.model.Target">
-        select a.*,to_days(now())-to_days(a.set_time) nowKeep,b.name refereeName
+        select a.*,if(to_days(now())-to_days(a.set_time)&lt;=a.keep,to_days(now())-to_days(a.set_time),a.keep) nowKeep,b.name refereeName
         from t_target a
         left join t_admin b on a.referee_id = b.id
         where 1=1
@@ -127,7 +127,7 @@
 
     <!-- 获取我监督的挑战 -->
     <select id="listBySupervise" resultType="com.elangzhi.ssm.model.Target" parameterType="long">
-        select a.*,to_days(now())-to_days(a.set_time) nowKeep,c.name refereeName
+        select a.*,if(to_days(now())-to_days(a.set_time)&lt;=a.keep,to_days(now())-to_days(a.set_time),a.keep) nowKeep,c.name refereeName
         from t_target a
             left join t_target_supervise b on a.id = b.target_id
             left join t_admin c on a.referee_id = c.id
@@ -145,6 +145,12 @@
         order by a.set_time desc
     </select>
 
+    <select id="listFinishKeep" resultType="com.elangzhi.ssm.model.Target" >
+        select a.*
+        from t_target a
+        where 1=1
+              and to_days(now())-to_days(a.set_time)>=a.keep
+    </select>
 
 
 

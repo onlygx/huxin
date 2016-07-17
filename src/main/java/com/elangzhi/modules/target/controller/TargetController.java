@@ -1,6 +1,8 @@
 package com.elangzhi.modules.target.controller;
 
 import com.elangzhi.generator.util.GenUtil;
+import com.elangzhi.modules.money.services.MoneyService;
+import com.elangzhi.modules.targetSupervise.services.TargetSuperviseService;
 import com.elangzhi.modules.user.services.UserService;
 import com.elangzhi.ssm.controller.AdminBaseController;
 import com.elangzhi.ssm.controller.json.Tip;
@@ -9,6 +11,7 @@ import com.elangzhi.ssm.model.Account;
 import com.elangzhi.ssm.model.Admin;
 import com.elangzhi.ssm.model.Target;
 import com.elangzhi.modules.target.services.TargetService;
+import com.elangzhi.ssm.model.TargetSupervise;
 import com.elangzhi.ssm.services.AdminService;
 import com.elangzhi.ssm.tools.Const;
 import com.github.pagehelper.PageInfo;
@@ -21,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,12 +41,28 @@ public class TargetController extends AdminBaseController<Target> {
     public Tip chooseOpinion(Target target){
 
         try {
+            target.setStatus(3);
+            target.setFinishTime(new Date());
             targetService.updateById(target);
+            checkOpinion(target);
             return new Tip();
         } catch (Exception e) {
             System.out.println("裁决失败");
             e.printStackTrace();
             return new Tip(1);
+        }
+    }
+
+    private void checkOpinion(Target target) {
+        if(target.getOpinion() == 1){
+            try {
+                moneyService.insertByType(target.getUserId(),5,target.getPrice(),target.getId());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if(target.getOpinion() == 0){
+                List<TargetSupervise> tsList = targetSuperviseService.listByTargetId(target.getId());
+                //TODO
         }
     }
 
@@ -93,6 +113,10 @@ public class TargetController extends AdminBaseController<Target> {
     @Resource
     AdminService adminService;
 
+    @Resource
+    private MoneyService moneyService;
 
+    @Resource
+    private TargetSuperviseService targetSuperviseService;
 
 }

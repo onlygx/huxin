@@ -34,20 +34,23 @@ public class AppUserController {
     @RequestMapping(value = "/bindZFB", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "绑定支付宝",  notes = "绑定用户的支付宝")
-    public Tip bindZFB(
+    public Tip<User> bindZFB(
             @ApiParam(name = "zfb",value = "支付宝账号")
             @RequestParam  String zfb,
+            @ApiParam(name = "zfbName",value = "支付宝账号姓名")
+            @RequestParam  String zfbName,
             @ApiIgnore HttpSession session
     ){
         User user = (User) session.getAttribute(Const.USER);
         user.setZfb(zfb);
+        user.setZfbName(zfbName);
         try {
             userService.updateById(user);
             session.setAttribute(Const.USER,user);
-            return new Tip();
+            return new Tip<>(user);
         } catch (Exception e) {
             e.printStackTrace();
-            return new Tip(1);
+            return new Tip<>(1);
         }
 
     }
@@ -325,6 +328,8 @@ public class AppUserController {
         try {
             userService.insert(user);
             openIMService.addUser(createUserInfo(user));
+
+            session.setAttribute(Const.USER,user);
             return new Tip<>(user);
         } catch (Exception e) {
             e.printStackTrace();

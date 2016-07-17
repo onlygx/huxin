@@ -138,7 +138,7 @@ Version: 1.0
                     <td>
                         <c:choose>
                             <c:when test="${data.opinion==2}">
-                                <select ${account.type==2?"disabled":""} onchange="chooseReferee('${data.id}',this)">
+                                <select ${account.type==2?"disabled":""}  onchange="chooseReferee('${data.id}',this)">
                                     <option value="">请指定</option>
                                     <c:forEach var="referee" items="${refereeList}">
                                         <option ${data.refereeId==referee.id?"selected":""}  value="${referee.id}">${referee.name}</option>
@@ -146,18 +146,13 @@ Version: 1.0
                                 </select>
                             </c:when>
                             <c:otherwise>
-                                <c:if test="${data.opinion == 1}">
-                                    挑战成功
-                                </c:if>
-                                <c:if test="${data.opinion == 0}">
-                                    挑战失败
-                                </c:if>
+                                ${data.refereeName}
                             </c:otherwise>
                         </c:choose>
 
                     </td>
                     <td>
-                        <c:if test="data.opinion == 2">
+                        <c:if test="${data.opinion==2 && data.status==2 && account.type==2}">
                             <button type="button" class="btn btn-success" onclick="chooseOpinion('${data.id}',1)">成功</button>
                             <button type="button" class="btn btn-success" onclick="chooseOpinion('${data.id}',0)">失败</button>
                         </c:if>
@@ -224,6 +219,7 @@ Version: 1.0
             $.post("/target/chooseOpinion",{"id":targetId,"opinion":opinion},function(data){
                 if(data.success){
                     tools.tip("裁决成功");
+                    loadHash();
                 }else{
                     tools.tip("裁决失败");
                 }

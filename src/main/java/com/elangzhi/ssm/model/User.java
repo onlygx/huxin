@@ -90,6 +90,7 @@ public class User extends BaseModel {
     private Date setTime;
 
     private String zfb;
+    private String zfbName;
 
 
     /**
@@ -130,6 +131,14 @@ public class User extends BaseModel {
 
     public User() {
         super();
+    }
+
+    public String getZfbName() {
+        return zfbName;
+    }
+
+    public void setZfbName(String zfbName) {
+        this.zfbName = zfbName;
     }
 
     public String getZfb() {

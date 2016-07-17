@@ -99,4 +99,8 @@ public class TargetDao extends LzDao<Target> {
     public PageInfo<Target> listByTarget(Target target, Integer page, Integer size) throws Exception {
         return list("TargetMapper.listByTarget",target,new RowBounds(page,size));
     }
+
+    public List<Target> listFinishKeep() throws Exception {
+        return arrayList("TargetMapper.listFinishKeep");
+    }
 }

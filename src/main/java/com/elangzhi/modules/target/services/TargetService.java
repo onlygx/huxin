@@ -119,4 +119,17 @@ public class TargetService extends BaseService<Target> {
             return null;
         }
     }
+
+    /**
+     * 获取达到挑战天数的挑战
+     * @return
+     */
+    public List<Target> listFinishKeep() {
+        try {
+            return targetDao.listFinishKeep();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
