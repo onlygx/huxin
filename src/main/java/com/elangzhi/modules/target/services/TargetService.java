@@ -57,8 +57,13 @@ public class TargetService extends BaseService<Target> {
     * @return 实体
     * @throws Exception 查询异常
     */
-    public Target selectById(Long id) throws Exception {
-        return targetDao.selectById(id);
+    public Target selectById(Long id) {
+        try {
+            return targetDao.selectById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**

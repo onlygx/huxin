@@ -102,4 +102,13 @@ public class AdminService extends BaseService<Admin> {
             return null;
         }
     }
+
+    public List<Admin> listReferee() {
+        try {
+            return adminDao.listReferee();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

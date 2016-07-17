@@ -71,9 +71,9 @@ Version: 1.0
                     <a href="javascript:void(0);" class="btn blue" onclick="history.go(-1);">
                         <i class="fa  fa-refresh fa-spin "></i>返回
                     </a>
-                    <a href="#module=target/add" class="btn green">
+                   <%-- <a href="#module=target/add" class="btn green">
                         添加 <i class="fa fa-plus"></i>
-                    </a>
+                    </a>--%>
                 </div>
             </div>
             <div class="col-md-6">
@@ -92,18 +92,16 @@ Version: 1.0
                 <th class="table-checkbox">
                     <input type="checkbox" class="group-checkable"/>
                 </th>
-                <th>列：id</th>
-                <th>列：title</th>
-                <th>列：userId</th>
-                <th>列：setTime</th>
-                <th>列：refereeId</th>
-                <th>列：keep</th>
-                <th>列：price</th>
-                <th>列：status</th>
-                <th>列：type</th>
-                <th>列：opinion</th>
-                <th>列：content</th>
-                <th>操作</th>
+                <th>用户姓名</th>
+                <th>标题</th>
+                <th>内容</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>以坚持天数</th>
+                <th>押金</th>
+                <th>裁判</th>
+                <th>是否成功</th>
+               <%-- <th>操作</th>--%>
             </tr>
             </thead>
             <tbody>
@@ -111,20 +109,69 @@ Version: 1.0
                 <tr>
                     <td class="center"><input type="checkbox" class="checkboxes" value="${data.id}"/></td>
                     <td>${data.id}</td>
-                    <td>${data.title}</td>
-                    <td>${data.userId}</td>
-                    <td>${data.setTime}</td>
-                    <td>${data.refereeId}</td>
-                    <td>${data.keep}</td>
-                    <td>${data.price}</td>
-                    <td>${data.status}</td>
-                    <td>${data.type}</td>
-                    <td>${data.opinion}</td>
-                    <td>${data.content}</td>
                     <td>
+                        <c:choose>
+                             <c:when test="${data.title.length() > 6}">
+                                <label title="${data.title}">${data.title.substring(0,6) }...</label>
+                             </c:when>
+                             <c:otherwise>
+                                 <label title="${data.title}">${data.title}</label>
+                             </c:otherwise>
+                         </c:choose>
+                     </label>
+                    </td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${data.content.length() > 6}">
+                                <label title="${data.content}">${data.content.substring(0,6) }...</label>
+                            </c:when>
+                            <c:otherwise>
+                                <label title="${data.content}">${data.content}</label>
+                            </c:otherwise>
+                        </c:choose>
+                        </label>
+                    </td>
+                    <td>${data.getSetTime("yyyy-MM-dd")}</td>
+                   <td>${data.getEndTime("yyyy-MM-dd")}</td>
+                    <td>${data.nowKeep}</td>
+                    <td>${data.price}</td>
+                    <td>
+                        <c:choose>
+                            <c:when test="${data.opinion==2}">
+                                <select ${account.type==2?"disabled":""} onchange="chooseReferee('${data.id}',this)">
+                                    <option value="">请指定</option>
+                                    <c:forEach var="referee" items="${refereeList}">
+                                        <option ${data.refereeId==referee.id?"selected":""}  value="${referee.id}">${referee.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </c:when>
+                            <c:otherwise>
+                                <c:if test="${data.opinion == 1}">
+                                    挑战成功
+                                </c:if>
+                                <c:if test="${data.opinion == 0}">
+                                    挑战失败
+                                </c:if>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </td>
+                    <td>
+                        <c:if test="data.opinion == 2">
+                            <button type="button" class="btn btn-success" onclick="chooseOpinion('${data.id}',1)">成功</button>
+                            <button type="button" class="btn btn-success" onclick="chooseOpinion('${data.id}',0)">失败</button>
+                        </c:if>
+                        <c:if test="${data.opinion == 1}">
+                            挑战成功
+                        </c:if>
+                        <c:if test="${data.opinion == 0}">
+                            挑战失败
+                        </c:if>
+                    </td>
+<%--                    <td>
                         <a href="javascript:void(0);" onclick="deleteById('${data.id}')">删除</a>
                         <a href="#module=target/edit&id=${data.id}">查看\编辑</a>
-                    </td>
+                    </td>--%>
                 </tr>
             </c:forEach>
             </tbody>
@@ -142,7 +189,7 @@ Version: 1.0
 
     //此参数不可删掉 分页插件参数
     var pageParam = {
-        url: module + "/list",
+        url: module + "/listTarget",
         pageSize: ${pageInfo.pageSize},       //每页显示行数 默认10
         currentPage: ${pageInfo.pageNum},     //当前页数
         totalPages: ${pageInfo.pages},        //总页数
@@ -160,6 +207,30 @@ Version: 1.0
         initList();
 
     });
+
+    function chooseReferee(targetId,selectObj){
+        var refereeId = $(selectObj).val();
+        $.post("/target/chooseReferee",{"id":targetId,"refereeId":refereeId},function(data){
+            if(data.success){
+                tools.tip("选择成功");
+            }else{
+                tools.tip("选择失败");
+            }
+        },"json");
+    }
+
+    function chooseOpinion(targetId,opinion){
+        art.confirm("确定更改挑战状态吗？",function(){
+            $.post("/target/chooseOpinion",{"id":targetId,"opinion":opinion},function(data){
+                if(data.success){
+                    tools.tip("裁决成功");
+                }else{
+                    tools.tip("裁决失败");
+                }
+            },"json");
+        });
+
+    }
 
 </script>
 <!-- END PAGE JAVASCRIPT-->

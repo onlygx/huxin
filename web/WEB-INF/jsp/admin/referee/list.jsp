@@ -79,7 +79,7 @@
                     <a href="javascript:void(0);" class="btn blue" onclick="history.go(-1);">
                         <i class="fa  fa-refresh fa-spin "></i>返回
                     </a>
-                    <a href="#module=admin/add" class="btn green">
+                    <a href="#module=admin/addReferee" class="btn green">
                         添加 <i class="fa fa-plus"></i>
                     </a>
                 </div>

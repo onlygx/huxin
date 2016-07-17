@@ -87,16 +87,25 @@
 
 
     <select id="list" resultType="com.elangzhi.ssm.model.Target" parameterType="map">
-        select a.*
+        select a.*,to_days(now())-to_days(a.set_time) nowKeep,b.name refereeName
         from t_target a
+        left join t_admin b on a.referee_id = b.id
         where 1=1
+        <if test="status != null" >
+            and a.status = #{status}
+        </if>
+        <if test="refereeId != null" >
+            and a.referee_id = #{refereeId}
+        </if>
+        order by a.set_time desc
     </select>
 
 
     <!-- 获取我的挑战 -->
     <select id="listByTarget" resultType="com.elangzhi.ssm.model.Target" parameterType="com.elangzhi.ssm.model.Target">
-        select a.*,to_days(now())-to_days(a.set_time) nowKeep
+        select a.*,to_days(now())-to_days(a.set_time) nowKeep,b.name refereeName
         from t_target a
+        left join t_admin b on a.referee_id = b.id
         where 1=1
 
         <if test="userId != null">
@@ -118,9 +127,10 @@
 
     <!-- 获取我监督的挑战 -->
     <select id="listBySupervise" resultType="com.elangzhi.ssm.model.Target" parameterType="long">
-        select a.*,to_days(now())-to_days(a.set_time) nowKeep
+        select a.*,to_days(now())-to_days(a.set_time) nowKeep,c.name refereeName
         from t_target a
             left join t_target_supervise b on a.id = b.target_id
+            left join t_admin c on a.referee_id = c.id
         where b.user_id = #{userId}
 
         <if test="status != null ">

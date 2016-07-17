@@ -9,7 +9,7 @@
 <meta content="" name="description"/>
 <meta content="GaoXiang" name="author"/>
 
-<title>Weekend 后台管理</title>
+<title>后台管理</title>
 <!-- BEGIN GLOBAL MANDATORY STYLES -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
 <link href="/static/metronic/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -39,7 +39,7 @@
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGO -->
 <div class="logo">
-	<h1 style="font-size: 50px;color: white;">Weekend 后台管理系统</h1>
+	<h1 style="font-size: 50px;color: white;">后台管理系统</h1>
 </div>
 <!-- END LOGO -->
 <!-- BEGIN LOGIN -->

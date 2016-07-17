@@ -58,6 +58,22 @@ public class AppRecordController {
     }
 
 
+    @RequestMapping(value = "/listByTargetIdGet", method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "根据挑战id获取动态",  notes = "获取某挑战的动态（分页）(Get)")
+    public Tip<PageInfo<Record>> listByTargetIdGet(
+            @ApiParam(name = "targetId",value = "挑战id")
+            @RequestParam Long targetId,
+            @ApiParam(name = "page",value = "第几页")
+            @RequestParam Integer page,
+            @ApiParam(name = "size",value = "每页大小")
+            @RequestParam Integer size
+    ){
+        PageInfo<Record> targetPageInfo = recordService.listByTargetId(targetId,page,size);
+        return new Tip<>(targetPageInfo);
+    }
+
+
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "提交动态",  notes = "提交某个挑战下的动态")

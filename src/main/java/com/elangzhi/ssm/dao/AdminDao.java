@@ -94,4 +94,8 @@ public class AdminDao extends LzDao<Admin> {
     public PageInfo<Admin> listByParam(ParamMap paramMap, Integer page, Integer size) throws Exception {
         return list("AdminMapper.listByParam",paramMap,new RowBounds(page,size));
     }
+
+    public List<Admin> listReferee() throws Exception {
+        return arrayList("AdminMapper.listReferee");
+    }
 }

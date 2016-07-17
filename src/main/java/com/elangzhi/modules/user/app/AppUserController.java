@@ -121,17 +121,17 @@ public class AppUserController {
     public Tip<User> updateUser(
 
             @ApiParam(name = "nick",value = "昵称")
-            @RequestParam String nick,
+            @RequestParam(required = false) String nick,
             @ApiParam(name = "intro",value = "个性签名")
-            @RequestParam String intro,
+            @RequestParam(required = false) String intro,
             @ApiParam(name = "province",value = "省份（中文名）")
-            @RequestParam String province,
+            @RequestParam(required = false) String province,
             @ApiParam(name = "city",value = "市（中文名）")
-            @RequestParam String city,
+            @RequestParam(required = false) String city,
             @ApiParam(name = "district",value = "区（中文名）")
-            @RequestParam String district,
+            @RequestParam(required = false) String district,
             @ApiParam(name = "address",value = "地址")
-            @RequestParam String address,
+            @RequestParam(required = false) String address,
             @ApiIgnore HttpSession session){
 
         try {

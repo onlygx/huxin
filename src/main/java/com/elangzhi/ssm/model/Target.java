@@ -2,6 +2,7 @@ package com.elangzhi.ssm.model;
 
 import com.elangzhi.ssm.model.base.BaseModel;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class Target extends BaseModel {
      * 裁判
      */
     private String refereeId;
+    private String refereeName;
 
     /**
      * 保持天数（整数）
@@ -127,6 +129,29 @@ public class Target extends BaseModel {
         super();
     }
 
+
+    public String getSetTime(String pattern){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(this.setTime);
+    }
+
+    public String getEndTime(String pattern){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(this.endTime);
+    }
+
+    public String getFinishTime(String pattern){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        return simpleDateFormat.format(this.finishTime);
+    }
+
+    public String getRefereeName() {
+        return refereeName;
+    }
+
+    public void setRefereeName(String refereeName) {
+        this.refereeName = refereeName;
+    }
 
     public Date getEndTime() {
         return endTime;

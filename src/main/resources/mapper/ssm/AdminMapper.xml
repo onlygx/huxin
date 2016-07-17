@@ -96,5 +96,11 @@
 
     </select>
 
+    <select id="listReferee" resultType="com.elangzhi.ssm.model.Admin">
+        select a.*
+        from t_admin a
+        left join t_account b on a.id = b.info_id
+        where b.type=2
+    </select>
 
 </mapper>

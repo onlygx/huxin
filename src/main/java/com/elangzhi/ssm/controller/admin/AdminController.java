@@ -144,7 +144,9 @@ public class AdminController extends AdminBaseController<Admin> {
             account.setUserName(admin.getUserName());
             account.setPassword(admin.getPassword());
             account.setInfoId(admin.getId());
+            account.setType(admin.getType());
             account.setStatus(1);
+
 
             if(account.getType() == 2){
                 AccountRole accountRole = new AccountRole();
