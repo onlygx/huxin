@@ -208,6 +208,7 @@ Version: 1.0
         $.post("/target/chooseReferee",{"id":targetId,"refereeId":refereeId},function(data){
             if(data.success){
                 tools.tip("选择成功");
+                loadHash();
             }else{
                 tools.tip("选择失败");
             }
