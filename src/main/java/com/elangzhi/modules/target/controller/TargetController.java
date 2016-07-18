@@ -54,6 +54,8 @@ public class TargetController extends AdminBaseController<Target> {
     }
 
     private void checkOpinion(Target target) {
+        target = targetService.selectById(target.getId());
+
         try {
             if(target.getOpinion() == 1){
 

@@ -23,8 +23,9 @@ public class TargetStatusTask {
      * 一小时一次
      * fixedDelay 上一次任务执行结束到下一次的时间
      */
-    @Scheduled(fixedDelay = 1000 * 60 * 60)
+    @Scheduled(fixedDelay = 1000 * 60 )
     public void checkTimeOut() {
+        logger.info("开始处理已经坚持到天数的挑战");
         List<Target> targets = targetService.listFinishKeep();
 
         for(Target target : targets){

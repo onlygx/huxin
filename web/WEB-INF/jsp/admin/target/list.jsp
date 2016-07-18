@@ -96,8 +96,8 @@ Version: 1.0
                 <th>标题</th>
                 <th>内容</th>
                 <th>开始时间</th>
-                <th>结束时间</th>
-                <th>以坚持天数</th>
+                <th>预期坚持天数</th>
+                <th>已坚持天数</th>
                 <th>押金</th>
                 <th>裁判</th>
                 <th>是否成功</th>
@@ -132,12 +132,13 @@ Version: 1.0
                         </label>
                     </td>
                     <td>${data.getSetTime("yyyy-MM-dd")}</td>
-                   <td>${data.getEndTime("yyyy-MM-dd")}</td>
+                   <td>${data.keep}</td>
                     <td>${data.nowKeep}</td>
                     <td>${data.price}</td>
                     <td>
                         <c:choose>
                             <c:when test="${data.opinion==2}">
+
                                 <select ${account.type==2?"disabled":""}  onchange="chooseReferee('${data.id}',this)">
                                     <option value="">请指定</option>
                                     <c:forEach var="referee" items="${refereeList}">
@@ -153,8 +154,8 @@ Version: 1.0
                     </td>
                     <td>
                         <c:if test="${data.opinion==2 && data.status==2 && account.type==2}">
-                            <button type="button" class="btn btn-success" onclick="chooseOpinion('${data.id}',1)">成功</button>
-                            <button type="button" class="btn btn-success" onclick="chooseOpinion('${data.id}',0)">失败</button>
+                            <button type="button"  class="btn btn-xs blue" onclick="chooseOpinion('${data.id}',1)">成功</button>
+                            <button type="button" class="btn btn-xs red" onclick="chooseOpinion('${data.id}',0)">失败</button>
                         </c:if>
                         <c:if test="${data.opinion == 1}">
                             挑战成功

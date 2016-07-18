@@ -111,7 +111,12 @@ public class MoneyService extends BaseService<Money> {
      */
     public Integer insertByType(Long userId,Integer type,Double money,Long InfoId) throws Exception {
 
-        String sMoney = new java.text.DecimalFormat("#.00").format(money);
+        String sMoney = null;
+        try {
+            sMoney = new java.text.DecimalFormat("#.00").format(money);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         money = Double.valueOf(sMoney);
 
         Money moneyRecord = new Money();
