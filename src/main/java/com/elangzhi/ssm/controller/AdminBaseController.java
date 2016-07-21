@@ -28,6 +28,7 @@ public class AdminBaseController<T> {
 
 	private Logger logger = Logger.getLogger(this.getClass());
 
+
 	@Resource
 	BaseService<T> baseService;
 
@@ -51,6 +52,7 @@ public class AdminBaseController<T> {
      */
     @RequestMapping(value="/add")
     public ModelAndView add(ModelMap model,T t){
+        System.out.println();
         model.put("longId", UUIDFactory.getLongId());
         return new ModelAndView("admin/"+ GenUtil.LowStr(t.getClass().getSimpleName()) +"/add",model);
     }

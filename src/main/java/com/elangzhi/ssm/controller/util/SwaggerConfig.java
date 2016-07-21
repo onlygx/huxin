@@ -12,10 +12,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 /**
  * Swagger 配置文件
  */
-@Configuration
-@EnableWebMvc
-@EnableSwagger
-@ComponentScan(basePackages ={"com.elangzhi.modules"})
+/*@Configuration
+@EnableSwagger*/
 public class SwaggerConfig {
 
 

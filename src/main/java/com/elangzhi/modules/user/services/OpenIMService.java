@@ -39,7 +39,7 @@ public class OpenIMService {
 
     public static void main(String[] args) {
         try {
-            new OpenIMService().getUser("15615410811");
+            new OpenIMService().getUser("18363088168");
         } catch (ApiException e) {
             e.printStackTrace();
         }
