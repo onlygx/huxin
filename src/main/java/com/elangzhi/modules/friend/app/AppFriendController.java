@@ -114,7 +114,7 @@ public class AppFriendController {
     public Tip<Friend> dealFriend(
             @ApiParam(name = "id", value = "当前申请的id")
             @RequestParam Long id,
-            @ApiParam(name = "状态", value = "同意传1，不同意传0")
+            @ApiParam(name = "status", value = "同意传1，不同意传0")
             @RequestParam Integer status
     ){
         Friend f = friendService.selectById(id);
