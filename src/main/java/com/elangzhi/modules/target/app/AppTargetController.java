@@ -137,7 +137,6 @@ public class AppTargetController {
             @RequestParam Long id
     ){
         try {
-            System.out.println("Get提交");
             Target target = targetService.selectById(id);
             target.setUser(userService.selectById(target.getUserId()));
             List<TargetSupervise> targetSuperviseList = targetSuperviseService.listByTargetId(id);

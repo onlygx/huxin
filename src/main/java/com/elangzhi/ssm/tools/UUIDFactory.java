@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.UUID;
 
 /**
+ * 获取随机字符串
  * Created by GaoXiang on 2015/12/29 0029.
  */
 public class UUIDFactory {

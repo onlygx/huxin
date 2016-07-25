@@ -5,6 +5,7 @@ import com.elangzhi.modules.user.services.UserService;
 import com.elangzhi.ssm.controller.json.Tip;
 import com.elangzhi.ssm.model.User;
 import com.elangzhi.ssm.tools.Const;
+import com.elangzhi.ssm.tools.SMSUtil;
 import com.elangzhi.ssm.tools.UUIDFactory;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.taobao.api.domain.Userinfos;
@@ -81,7 +82,6 @@ public class AppUserController {
             @RequestParam Long id
     ){
         try {
-            System.out.println("Get提交");
             User user = userService.selectById(id);
             return new Tip<>(user);
         } catch (Exception e) {
@@ -249,11 +249,11 @@ public class AppUserController {
         if(user == null){
             return new Tip<>(1);
         }
-        //TODO 发送短信验证码
         String code = UUIDFactory.getCode6();
+        SMSUtil.sendCode(user.getPhone(),code);
         session.setAttribute(Const.SECURITY_CODE,code);
         session.setAttribute(Const.SECURITY_PHONE,userName);
-        return new Tip<>(code);
+        return new Tip<>("执行成功");
     }
 
     /**
@@ -403,12 +403,13 @@ public class AppUserController {
         if(user != null){
             return new Tip<>(1);
         }
-        //TODO 发送短信验证码
+
         String code = UUIDFactory.getCode6();
+        SMSUtil.sendCode(phone,code);
         session.setAttribute(Const.SECURITY_CODE,code);
         session.setAttribute(Const.SECURITY_PHONE,phone);
         System.out.println("发送验证码："+ code);
-        return new Tip<>(code);
+        return new Tip<>("已成功执行！");
     }
 
     //---------------------------- property -------------------------------

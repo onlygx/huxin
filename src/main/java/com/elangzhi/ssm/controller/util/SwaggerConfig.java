@@ -12,8 +12,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 /**
  * Swagger 配置文件
  */
-/*@Configuration
-@EnableSwagger*/
+@Configuration
+@EnableSwagger
 public class SwaggerConfig {
 
 

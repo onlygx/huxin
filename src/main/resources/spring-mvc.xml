@@ -22,8 +22,8 @@
     <!-- 添加任务注解驱动 -->
     <task:annotation-driven/>
 
-<!--    &lt;!&ndash; SwaggerConfig 创建 &ndash;&gt;
-    <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />-->
+    <!-- SwaggerConfig 创建 -->
+    <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
 
     <!-- 访问拦截  -->
     <mvc:interceptors>
