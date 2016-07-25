@@ -93,6 +93,8 @@ public class User extends BaseModel {
     private String zfbName;
 
 
+    private Friend friend;//是否是好友
+
     /**
      * 用来给Objective-C语言做适配
      */
@@ -133,6 +135,14 @@ public class User extends BaseModel {
 
     public User() {
         super();
+    }
+
+    public Friend getFriend() {
+        return friend;
+    }
+
+    public void setFriend(Friend friend) {
+        this.friend = friend;
     }
 
     public String getZfbName() {

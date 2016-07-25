@@ -32,19 +32,25 @@ public class AppFriendController {
 
     @RequestMapping(value = "/friendApply", method = RequestMethod.POST)
     @ResponseBody
-    @ApiOperation(value = "好友申请", notes = "请求添加好友")
+    @ApiOperation(value = "好友申请", notes = "根据手机号请求添加好友")
     public Tip<Friend> friendApply(
-            @ApiParam(name = "userId", value = "目标用户id")
-            @RequestParam Long userId,
+            @ApiParam(name = "phone", value = "目标用户手机号")
+            @RequestParam String phone,
             @ApiIgnore HttpSession session
     ) {
+
+        User friendUser = userService.selectByUserName(phone);
+        if(friendUser == null){
+            return new Tip<>(2);
+        }
+
         User user = (User) session.getAttribute(Const.USER);
         Friend friend = new Friend();
         friend.setId(UUIDFactory.getLongId());
         friend.setSetTime(new Date());
         friend.setStatus(2);
         friend.setUserId(user.getId());
-        friend.setFriendId(userId);
+        friend.setFriendId(friendUser.getId());
         friend.setIntro(user.getNick());
         try {
             friendService.insert(friend);
@@ -54,6 +60,41 @@ public class AppFriendController {
             return new Tip<>(1);
         }
     }
+
+
+
+    @RequestMapping(value = "/findByPhone", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "好友查询", notes = "根据手机号查询用户，如果是好友，user会携带friend字段")
+    public Tip<User> findByPhone(
+            @ApiParam(name = "phone", value = "目标用户手机号")
+            @RequestParam String phone,
+            @ApiIgnore HttpSession session
+    ) {
+
+        User friendUser = userService.selectByUserName(phone);
+        if(friendUser == null){
+            return new Tip<>(2);
+        }
+
+        User user = (User) session.getAttribute(Const.USER);
+        List<Friend> friends = friendService.listByUserId(user.getId());
+
+        try {
+            for(Friend f : friends){
+                if(f.getFriendId() .equals(friendUser.getId())){
+                    friendUser.setFriend(f);
+                    return new Tip<>(friendUser);
+                }
+            }
+            return new Tip<>(friendUser);
+        } catch (Exception e) {
+            //e.printStackTrace();
+            return new Tip<>(1);
+        }
+    }
+
+
 
     @RequestMapping(value = "/friendList", method = RequestMethod.POST)
     @ResponseBody
@@ -100,7 +141,17 @@ public class AppFriendController {
         }
     }
 
-
+    @RequestMapping(value = "/applyList", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "好友申请列表", notes = "获取我的好友申请列表")
+    public Tip<List<Friend>> applyList( @ApiIgnore HttpSession session){
+        User user = (User) session.getAttribute(Const.USER);
+        List<Friend> friends = friendService.listByApplyUserId(user.getId());
+        for(Friend f : friends){
+            f.setUser(userService.selectById(f.getUserId()));
+        }
+        return new Tip<>(friends);
+    }
 
 
     //---------------------------- property -------------------------------

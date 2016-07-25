@@ -77,4 +77,13 @@
         and a.status = 1
     </select>
 
+    <!-- 查询列表 -->
+    <select id="listByApplyUserId" resultType="com.elangzhi.ssm.model.Friend" parameterType="long">
+        select a.*
+        from t_friend a
+        where 1=1
+        and a.friend_id = #{userId}
+        and a.status = 2
+    </select>
+
 </mapper>

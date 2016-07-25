@@ -107,4 +107,13 @@ public class FriendService extends BaseService<Friend> {
             return null;
         }
     }
+
+    public List<Friend> listByApplyUserId(Long userId) {
+        try {
+            return friendDao.listByApplyUserId(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

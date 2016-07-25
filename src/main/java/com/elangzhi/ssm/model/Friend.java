@@ -1,8 +1,10 @@
 package com.elangzhi.ssm.model;
 
+import com.elangzhi.ssm.model.base.BaseModel;
+
 import java.util.Date;
 
-public class Friend {
+public class Friend extends BaseModel {
     private Long id;
 
     private Long userId;

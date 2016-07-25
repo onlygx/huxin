@@ -93,4 +93,8 @@ public class FriendDao extends LzDao<Friend> {
     public List<Friend> listByUserId(Long userId) throws Exception {
         return arrayList("FriendMapper.listByUserId",userId);
     }
+
+    public List<Friend> listByApplyUserId(Long userId) throws Exception {
+        return arrayList("FriendMapper.listByApplyUserId",userId);
+    }
 }

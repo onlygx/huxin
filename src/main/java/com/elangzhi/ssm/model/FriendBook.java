@@ -1,6 +1,8 @@
 package com.elangzhi.ssm.model;
 
-public class FriendBook {
+import com.elangzhi.ssm.model.base.BaseModel;
+
+public class FriendBook  extends BaseModel {
     private Long id;
 
     private String name;

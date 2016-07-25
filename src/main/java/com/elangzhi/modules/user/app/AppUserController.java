@@ -32,6 +32,15 @@ import java.util.List;
 @Api(value = "用户", description = "登录注册、资料修改、头像修改、密码修改")
 public class AppUserController {
 
+
+    @RequestMapping(value = "/invitation", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "邀请用户",  notes = "发送短信邀请用户使用本软件")
+    public Tip invitation(String phone){
+        SMSUtil.sendInvitation(phone);
+        return new Tip();
+    }
+
     @RequestMapping(value = "/bindZFB", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "绑定支付宝",  notes = "绑定用户的支付宝")

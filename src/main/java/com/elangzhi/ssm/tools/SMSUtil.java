@@ -78,4 +78,9 @@ public class SMSUtil {
             e.printStackTrace();
         }
     }
+
+    public static void sendInvitation(String phone) {
+        String content = "您的好友邀请您使用【互助平台】，您可以在各大应用商店搜索到。欢迎体验。";
+        send(phone,content);
+    }
 }

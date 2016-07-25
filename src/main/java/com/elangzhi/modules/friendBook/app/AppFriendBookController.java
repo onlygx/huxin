@@ -24,8 +24,8 @@ import java.util.List;
 * @author GaoXiang
 * @version 1.0
 */
-@Controller
-@RequestMapping("/app/friendBook")
+/*@Controller
+@RequestMapping("/app/friendBook")*/
 public class AppFriendBookController {
 
     @RequestMapping(value = "/uploadBook", method = RequestMethod.POST)
