@@ -36,7 +36,10 @@ public class AppUserController {
     @RequestMapping(value = "/invitation", method = RequestMethod.POST)
     @ResponseBody
     @ApiOperation(value = "邀请用户",  notes = "发送短信邀请用户使用本软件")
-    public Tip invitation(String phone){
+    public Tip invitation(
+            @ApiParam(name = "phone",value = "手机号")
+            @RequestParam  String phone
+    ){
         SMSUtil.sendInvitation(phone);
         return new Tip();
     }

@@ -8,16 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e4c48440-1bc3-4a0d-8ab6-116121abb174" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friend/app/AppFriendController.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friend/app/AppFriendController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friend/dao/FriendDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friend/dao/FriendDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friend/services/FriendService.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friend/services/FriendService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friendBook/app/AppFriendBookController.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/friendBook/app/AppFriendBookController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/user/app/AppUserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/user/app/AppUserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/model/Friend.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/model/Friend.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/model/FriendBook.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/model/FriendBook.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/tools/SMSUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/tools/SMSUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/friend/FriendMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/friend/FriendMapper.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,8 +59,8 @@
       <file leaf-file-name="AppUserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/user/app/AppUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+            <state relative-caret-position="242">
+              <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -2127,7 +2118,7 @@
       <workItem from="1469069665500" duration="16173000" />
       <workItem from="1469148635592" duration="10814000" />
       <workItem from="1469407772956" duration="11600000" />
-      <workItem from="1469425557875" duration="2985000" />
+      <workItem from="1469425557875" duration="3190000" />
     </task>
     <task id="LOCAL-00001" summary="company">
       <created>1468835052377</created>
@@ -2150,11 +2141,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469422406815</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="company">
+      <created>1469430013720</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1469430013720</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87469000" />
+    <option name="totallyTimeSpent" value="87674000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
@@ -2244,6 +2242,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2333,6 +2332,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="151" column="33" selection-start-line="151" selection-start-column="33" selection-end-line="151" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2657,8 +2657,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/user/app/AppUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        <state relative-caret-position="242">
+          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
           <folding />
         </state>
       </provider>
