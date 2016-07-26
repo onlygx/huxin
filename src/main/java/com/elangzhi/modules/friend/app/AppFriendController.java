@@ -38,13 +38,21 @@ public class AppFriendController {
             @RequestParam String phone,
             @ApiIgnore HttpSession session
     ) {
-
+        User user = (User) session.getAttribute(Const.USER);
         User friendUser = userService.selectByUserName(phone);
         if(friendUser == null){
             return new Tip<>(2);
         }
 
-        User user = (User) session.getAttribute(Const.USER);
+        //如果他的申请列表中已经存在我
+        List<Friend> friends = friendService.listByApplyUserId(friendUser.getId());
+        for(Friend f : friends){
+            if(f.getUserId().equals(user.getId())){
+                return new Tip<>(3);
+            }
+        }
+
+
         Friend friend = new Friend();
         friend.setId(UUIDFactory.getLongId());
         friend.setSetTime(new Date());
