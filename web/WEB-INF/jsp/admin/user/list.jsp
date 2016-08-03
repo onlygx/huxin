@@ -92,23 +92,11 @@ Version: 1.0
                 <th class="table-checkbox">
                     <input type="checkbox" class="group-checkable"/>
                 </th>
-                <th>列：id</th>
-                <th>列：userName</th>
-                <th>列：password</th>
-                <th>列：type</th>
-                <th>列：status</th>
-                <th>列：intro</th>
-                <th>列：phone</th>
-                <th>列：province</th>
-                <th>列：city</th>
-                <th>列：district</th>
-                <th>列：address</th>
-                <th>列：sex</th>
-                <th>列：head</th>
-                <th>列：nick</th>
-                <th>列：qq</th>
-                <th>列：wx</th>
-                <th>列：setTime</th>
+                <th>编号</th>
+                <th>用户名</th>
+                <th>电话</th>
+                <th>简介</th>
+                <th>qq</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -118,21 +106,9 @@ Version: 1.0
                     <td class="center"><input type="checkbox" class="checkboxes" value="${data.id}"/></td>
                     <td>${data.id}</td>
                     <td>${data.userName}</td>
-                    <td>${data.password}</td>
-                    <td>${data.type}</td>
-                    <td>${data.status}</td>
-                    <td>${data.intro}</td>
                     <td>${data.phone}</td>
-                    <td>${data.province}</td>
-                    <td>${data.city}</td>
-                    <td>${data.district}</td>
-                    <td>${data.address}</td>
-                    <td>${data.sex}</td>
-                    <td>${data.head}</td>
-                    <td>${data.nick}</td>
+                    <td>${data.intro}</td>
                     <td>${data.qq}</td>
-                    <td>${data.wx}</td>
-                    <td>${data.setTime}</td>
                     <td>
                         <a href="javascript:void(0);" onclick="deleteById('${data.id}')">删除</a>
                         <a href="#module=user/edit&id=${data.id}">查看\编辑</a>
