@@ -113,5 +113,6 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.9" level="project" />
     <orderEntry type="library" name="Maven: com.github.pagehelper:pagehelper:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.jsqlparser:jsqlparser:0.9.4" level="project" />
+    <orderEntry type="library" name="alipay-sdk-java20160805120059" level="project" />
   </component>
 </module>
