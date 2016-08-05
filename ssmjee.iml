@@ -10,12 +10,9 @@
         </fileset>
         <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
           <dependency>web application context</dependency>
-          <file>file://$MODULE_DIR$/web/WEB-INF/classes/spring-cache.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring-cache.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
-          <file>file://$MODULE_DIR$/web/WEB-INF/classes/spring-mvc.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring-mybatis.xml</file>
-          <file>file://$MODULE_DIR$/web/WEB-INF/classes/spring-mybatis.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -34,9 +31,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/target/classes" />
-    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />

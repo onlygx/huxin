@@ -11,7 +11,7 @@ public class Const {
 	/**
 	 * 不对匹配该值的访问路径拦截（正则）
 	 */
-	public static final String NO_INTERCEPTOR_PATH = ".*/((login)|(image)|(logout)|(code)|(api-docs)|(weixin)|(static)|(main)|(websocket)).*";
+	public static final String NO_INTERCEPTOR_PATH = ".*/((zfResult)|(login)|(image)|(logout)|(code)|(api-docs)|(weixin)|(static)|(main)|(websocket)).*";
 
 	/**
 	 * 登陆界面
