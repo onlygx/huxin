@@ -1,7 +1,10 @@
 package com.elangzhi.modules.money.app;
 
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.internal.util.AlipaySignature;
 import com.elangzhi.ssm.controller.json.Tip;
 import com.elangzhi.ssm.controller.util.ParamMap;
+import com.elangzhi.ssm.tools.AlipayConfig;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 支付宝 Controller
@@ -60,11 +65,62 @@ public class AppAlipayController {
 
     @RequestMapping(value = "/zfqm")
     @ResponseBody
-    public Tip<String> zfqm(){
+    public Tip<String> zfqm(String price){
+
+        Map<String,String> params = new HashMap<>();
+        params.put("service","mobile.securitypay.pay");//接口名称，固定值。
+        params.put("partner",AlipayConfig.PARTNER);//	合作者身份ID
+        params.put("_input_charset",AlipayConfig.INPUTCHARSET);//参数编码字符集
+        params.put("sign_type","");//签名方式
+        params.put("sign","");//签名
+        params.put("notify_url","");//服务器异步通知页面路径
+        params.put("out_trade_no","");//商户网站唯一订单号
+        params.put("subject","");//商品名称
+        params.put("payment_type","");//支付类型
+        params.put("seller_id","");//	卖家支付宝账号
+        params.put("total_fee","");//总金额
+        params.put("body","");//商品详情
+        params.put("goods_type","0");//具体区分本地交易的商品类型。 1：实物交易； 0：虚拟交易。
+
+        // 对订单做RSA 签名
+        try {
+            String rsaSign = AlipaySignature.rsaSign(params,AlipayConfig.RSA_PRIVATE,"UTF-8");
+
+        } catch (AlipayApiException e) {
+            e.printStackTrace();
+        }
+
+
 
         return new Tip<>();
     }
 
+
+    public String getOrderInfo(String subject, String body, String price) {
+
+        // 签约合作者身份ID
+        String orderInfo = "partner=" + "\"" + AlipayConfig.PARTNER + "\"";
+
+        // 签约卖家支付宝账号
+        orderInfo += "&seller_id=" + "\"" + AlipayConfig.SELLER + "\"";
+
+        // 商户网站唯一订单号
+        //orderInfo += "&out_trade_no=" + "\"" + getOutTradeNo() + "\"";
+
+        // 商品名称
+        orderInfo += "&subject=" + "\"" + subject + "\"";
+
+        // 商品详情
+        orderInfo += "&body=" + "\"" + body + "\"";
+
+        // 商品金额
+        orderInfo += "&total_fee=" + "\"" + price + "\"";
+
+        // 服务器异步通知页面路径
+        orderInfo += "&notify_url=" + "\"" + "http://notify.msp.hk/notify.htm";
+
+        return orderInfo;
+    }
 
 
 

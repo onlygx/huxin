@@ -3,62 +3,26 @@ package com.elangzhi.ssm.tools;
 
 public class AlipayConfig {
 
-    private static AlipayConfig  alconfig = null;
 
-    private AlipayConfig(){
+    //PID 在这里填上我们上面找到的PID;
+    public static final String PARTNER = "2088812135870881";
 
-    }
+    // 商户收款账号 然后在SELLER上写上我们支付宝的登录帐户，即那个你申请移动支付的支付宝账号
+    public static final String SELLER = "763348774@qq.com";
 
-    public static AlipayConfig getInstance(){
+    // 支付宝公钥 然后在RSA_PUBLIC这里填上支付宝公钥
+    public static final String RSA_PUBLIC ="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB";
 
-        if(alconfig==null){
-            alconfig = new AlipayConfig();
-        }
+    // 商户私钥，pkcs8格式
+    public static final String RSA_PRIVATE = "MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAMZ1vOKyFpa0bwDLH7rComDAjATw1O3aw1l7Ok8d/jKuD+Jh1bU7/ijigqXQ4Kp+7krd8pCf+XEjemlTPiPc8Z/CfUkrAlI8TqYeXGXBR2gl60c+Msnma7/41GluVbqpATBgEqfABVYcpCNh40BOdZ17K1la5mAwSJsDFm3H/1NjAgMBAAECgYBFo8j9L4rXpUcSWzSuH2BFXSuFDFFbiZllC+XBH4A0nnm6caRBLWUZSaqYrvw3N8U8hjd44nnwZoes7+XtRbmPO5v5SF/zBSj5yBz0tIlH/j/AGWYu7cM9y4ItpaYEg7zgSId4VN3nVC4AmitHcUDXaymllIi1hTTG+hPLqUOSoQJBAP6x4+hlq70qIaibwU04zicFDynepa2tT0HFpkER/sE7YKWCWQlYxq1GwaSbE4CU8WTC0PvErP4ifzyrQn+k2pECQQDHehQMmPBmaFsU7ibNYSN6z6l3lqxSGbcuxTCmU9y/RUKa9oh7+/CJnC3fv2EsftlOIkKM5xnjdEkjngiYUoCzAkBNy6RjrfqBM0dIqxqmLb26aW8ySNGudQuKeYbIxWhdOXfR1jjABB/beYtYbg3M7rG1J1SSMobssTjQHTeYqZAhAkAnxC2FCWQ7dihaNtPjc68IB6gIIDCAOYIsP8FgFy3Vr7AEhotU9DfSpyD6DwQHQ858ZhYQUu31SzRddl7ORvxDAkBmPLkqBxJRldnTz+uQSh+P4glHjXd4lSi//BSp3I0lOAUwwbdzbcfPVkaJdpVyG4FoA9/pz/ujIRdszDTB5ZGw";
 
-        return alconfig;
-    }
+    //商户网站使用的编码格式，固定为UTF-8。
+    public static final String INPUTCHARSET = "UTF-8";
 
-    // 如何获取安全校验码和合作身份者ID
-    // 1.访问支付宝商户服务中心(b.alipay.com)，然后用您的签约支付宝账号登陆.
-    // 2.访问“技术服务”→“下载技术集成文档”（https://b.alipay.com/support/helperApply.htm?action=selfIntegration）
-    // 3.在“自助集成帮助”中，点击“合作者身份(Partner ID)查询”、“安全校验码(Key)查询”
-
-    // ↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-    // 合作身份者ID，以2088开头由16位纯数字组成的字符串
-    public static String it_b_pay = "1h";
-
-    public static String partner = "2088601003079118";
-
-    public static String service = "create_direct_pay_by_user";
-
-    // 交易安全检验码，由数字和字母组成的32位字符串
-    public static String key = "zxcdvxgksaam2zjrmv5cv0p4jqesaioh";
-
-    // 签约支付宝账号或卖家收款支付宝帐户
-    public static String seller_email = "test@yahoo.com.cn";
-    // 读配置文件
-
-    // notify_url 交易过程中服务器通知的页面 要用 http://格式的完整路径，不允许加?id=123这类自定义参数
-    public static String notify_url ="http:www.xxx.com/projectName/alipayTrade.action";
+    //签名类型，目前仅支持RSA。
+    public static final String SIGNTYPE = "RSA";
 
 
-    // 付完款后跳转的页面 要用 http://格式的完整路径，不允许加?id=123这类自定义参数
-    // return_url的域名不能写成http://localhost/js_jsp_utf8/return_url.jsp，否则会导致return_url执行无效
-    //public static String return_url = "http:www.xxx.com/projectName/alipayTrade.action";
 
-    // 网站商品的展示地址，不允许加?id=123这类自定义参数
-    public static String show_url = "http://www.alipay.com";
 
-    // 收款方名称，如：公司名称、网站名称、收款人姓名等
-    public static String mainname = "收款方名称";
-    // ↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-
-    // 字符编码格式 目前支持 gbk 或 utf-8
-    public static String input_charset = "UTF-8";
-
-    // 签名方式 不需修改
-    public static String sign_type = "MD5";
-
-    // 访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http
-    public static String transport = "http";
 }
