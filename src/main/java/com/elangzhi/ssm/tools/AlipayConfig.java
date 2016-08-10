@@ -28,4 +28,7 @@ public class AlipayConfig {
     //异步通知url
     public static final String NOTIFY_URL = "http://onlygx.eicp.net/app/alipay/zfResult";
 
+    //接口名称。
+    public static final String SERVICE = "mobile.securitypay.pay";
+
 }

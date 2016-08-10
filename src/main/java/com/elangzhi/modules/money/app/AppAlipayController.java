@@ -8,10 +8,7 @@ import com.elangzhi.ssm.controller.json.Tip;
 import com.elangzhi.ssm.controller.util.ParamMap;
 import com.elangzhi.ssm.model.Money;
 import com.elangzhi.ssm.model.User;
-import com.elangzhi.ssm.tools.AlipayConfig;
-import com.elangzhi.ssm.tools.AlipayNotify;
-import com.elangzhi.ssm.tools.Const;
-import com.elangzhi.ssm.tools.UUIDFactory;
+import com.elangzhi.ssm.tools.*;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -107,7 +107,7 @@ public class AppAlipayController {
 
     @RequestMapping(value = "/zfqm")
     @ResponseBody
-    public Tip<String> zfqm(Double price,HttpSession session){
+    public Tip<String> zfqm(Double price,HttpSession session) throws UnsupportedEncodingException {
 
         User user = (User) session.getAttribute(Const.USER);
         Double money = Math.abs(price);
@@ -141,10 +141,11 @@ public class AppAlipayController {
         String url = "";
         // 对订单做RSA 签名
         try {
-            rsaSign = AlipaySignature.rsaSign(params,AlipayConfig.RSA_PRIVATE,"UTF-8");
+            rsaSign = URLEncoder.encode(AlipaySignature.rsaSign(params,AlipayConfig.RSA_PRIVATE,"UTF-8"),AlipayConfig.INPUT_CHARSET);
             url = AlipaySignature.getSignContent(params);
             url+="&sign_type=" + AlipayConfig.SIGN_TYPE;
             url+="&sign=" + rsaSign;
+
 
         } catch (AlipayApiException e) {
             e.printStackTrace();
@@ -156,7 +157,7 @@ public class AppAlipayController {
 
     private Map<String,String> createParams(String id,String sMoney){
         Map<String,String> params = new HashMap<>();
-        params.put("service","mobile.securitypay.pay");//接口名称，固定值。
+        params.put("service",AlipayConfig.SERVICE);//接口名称，固定值。
         params.put("partner",AlipayConfig.PARTNER);//	合作者身份ID
         params.put("_input_charset",AlipayConfig.INPUT_CHARSET);//参数编码字符集
 /*        params.put("sign_type",AlipayConfig.SIGN_TYPE);//签名方式
@@ -201,11 +202,67 @@ public class AppAlipayController {
         String gmtRefund = param.get("gmt_refund").toString();                                   //退款时间
     }
 
+    public Tip<String> zfqm2(HttpServletRequest request){
+        Map<String,String> params = new HashMap<String,String>();
+        Map requestParams = request.getParameterMap();
+        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
+            String name = (String) iter.next();
+            String[] values = (String[]) requestParams.get(name);
+            String valueStr = "";
+            for (int i = 0; i < values.length; i++) {
+                valueStr = (i == values.length - 1) ? valueStr + values[i]
+                        : valueStr + values[i] + ",";
+            }
+            params.put(name, valueStr);
+        }
+        if(params!=null&&params.size()>0)
+        {
+            //partner
+            String partner=request.getParameter("partner");
+            AlipayCore.logResult(partner,"partner");
+            //接口名
+            String service=request.getParameter("service");
+            //获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
+
+            if(partner.replace("\"","").equals(AlipayConfig.PARTNER)&& service.replace("\"","").equals(AlipayConfig.SERVICE)){//确认PID和接口名称。
+
+                //将post接收到的数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串。需要排序。
+                String data=AlipayCore.createLinkString(params);
+
+                //打印待签名字符串。工程目录下的log文件夹中。
+                AlipayCore.logResult(data,"datashuju");
+
+                //将待签名字符串使用私钥签名。
+                String rsa_sign= null;
+                try {
+                    rsa_sign = URLEncoder.encode(RSA.sign(data, AlipayConfig.RSA_PRIVATE, AlipayConfig.INPUT_CHARSET),AlipayConfig.INPUT_CHARSET);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+                //把签名得到的sign和签名类型sign_type拼接在待签名字符串后面。
+                data = data+"&sign=\""+rsa_sign+"\"&sign_type=\""+AlipayConfig.SIGN_TYPE+"\"";
+
+                //返回给客户端,建议在客户端使用私钥对应的公钥做一次验签，保证不是他人传输。
+                return new Tip<>(data);
+            }
+            else
+            {
+                return new Tip<>(1,"客户端信息与服务端配置信息有误！");
+            }
+        }
+        else
+        {
+            return new Tip<>(2,"无客户端信息!");
+        }
+    }
 
     @Resource
     private MoneyService moneyService;
 
     @Resource
     private UserService userService;
+
+
 
 }

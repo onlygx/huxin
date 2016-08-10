@@ -1,6 +1,11 @@
 
 package com.elangzhi.ssm.tools;
 
+import com.alipay.api.internal.util.StreamUtil;
+import com.alipay.api.internal.util.StringUtils;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -22,13 +27,11 @@ public class RSA{
 	{
         try 
         {
-        	PKCS8EncodedKeySpec priPKCS8 	= new PKCS8EncodedKeySpec( Base64.decode(privateKey) ); 
+        	/*PKCS8EncodedKeySpec priPKCS8 	= new PKCS8EncodedKeySpec( Base64.decode(privateKey) );
         	KeyFactory keyf 				= KeyFactory.getInstance("RSA");
-        	PrivateKey priKey 				= keyf.generatePrivate(priPKCS8);
-
-            java.security.Signature signature = java.security.Signature
-                .getInstance(SIGN_ALGORITHMS);
-
+			PrivateKey priKey 				= keyf.generatePrivate(priPKCS8);*/
+			PrivateKey priKey = getPrivateKeyFromPKCS8("RSA", new ByteArrayInputStream(privateKey.getBytes()));
+            java.security.Signature signature = java.security.Signature  .getInstance(SIGN_ALGORITHMS);
             signature.initSign(priKey);
             signature.update( content.getBytes(input_charset) );
 
@@ -43,7 +46,19 @@ public class RSA{
         
         return null;
     }
-	
+
+
+	public static PrivateKey getPrivateKeyFromPKCS8(String algorithm, InputStream ins) throws Exception {
+		if(ins != null && !StringUtils.isEmpty(algorithm)) {
+			KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
+			byte[] encodedKey = StreamUtil.readText(ins).getBytes();
+			encodedKey = com.alipay.api.internal.util.codec.Base64.decodeBase64(encodedKey);
+			return keyFactory.generatePrivate(new PKCS8EncodedKeySpec(encodedKey));
+		} else {
+			return null;
+		}
+	}
+
 	/**
 	* RSA验签名检查
 	* @param content 待签名数据
