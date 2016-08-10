@@ -27,7 +27,7 @@ public class Money extends BaseModel {
     private Date setTime;
 
     /**
-     * 成功状态，1，成功。2，待处理；（提现用）
+     * 成功状态，1，成功。2，待处理；（支付宝审核、提现用）
      */
     private Integer status;
 
