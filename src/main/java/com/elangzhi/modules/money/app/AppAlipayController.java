@@ -39,11 +39,11 @@ public class AppAlipayController {
     @ApiIgnore
     public String zfResult(HttpSession session, HttpServletRequest request){
         ParamMap param = new ParamMap(request);
-        String signType = param.get("sign_type").toString();                 //签名方式
+        String signType = "RSA";                                                                //签名方式
         String sign = param.get("sign").toString();                                    //签名
         String outTradeNo = param.get("out_trade_no").toString();    //商户网站唯一订单号
         String tradeStatus = param.get("trade_status").toString();     //交易状态
-        String tradeNo = param.get("trade_no").toString();                   //支付宝交易号
+        //String tradeNo = param.get("trade_no").toString();                   //支付宝交易号
         String notifyId = param.get("notify_id").toString();                  //通知校验ID
 
 
@@ -51,8 +51,9 @@ public class AppAlipayController {
         Map<String,String> params = new HashMap<>();
         param.remove("sign_type");
         param.remove("sign");
-        params.putAll(param);
-
+        for(String key : param.keySet()){
+            params.put(key,param.get(key).toString());
+        }
 
         if(notifyId!="" && notifyId!=null){////判断接受的post通知中有无notify_id，如果有则是异步通知。
             if(AlipayNotify.verifyResponse(notifyId).equals("true"))//判断成功之后使用getResponse方法判断是否是支付宝发来的异步通知。
@@ -80,7 +81,6 @@ public class AppAlipayController {
                             return "error";
                         }
 
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -105,20 +105,20 @@ public class AppAlipayController {
         return "success";
     }
 
-    @RequestMapping(value = "/zfqm")
-    @ResponseBody
+/*    @RequestMapping(value = "/zfqm")
+    @ResponseBody*/
     public Tip<String> zfqm(Double price,HttpSession session) throws UnsupportedEncodingException {
 
         User user = (User) session.getAttribute(Const.USER);
         Double money = Math.abs(price);
-        String sMoney = null;
+/*        String sMoney = null;
         try {
             sMoney = new java.text.DecimalFormat("#.00").format(money);
         } catch (Exception e) {
             e.printStackTrace();
             return new Tip<>(1,"请输入正确的金额！");
         }
-        money = Double.valueOf(sMoney);
+        money = Double.valueOf(sMoney);*/
 
         Money moneyRecord = new Money();
         try {
@@ -136,7 +136,7 @@ public class AppAlipayController {
             return new Tip<>(2,"创建订单失败！");
         }
 
-        Map<String,String> params = createParams(moneyRecord.getId().toString(),sMoney);
+        Map<String,String> params = createParams(moneyRecord.getId().toString(),money.toString());
         String rsaSign = "";
         String url = "";
         // 对订单做RSA 签名
@@ -202,26 +202,37 @@ public class AppAlipayController {
         String gmtRefund = param.get("gmt_refund").toString();                                   //退款时间
     }
 
-    public Tip<String> zfqm2(HttpServletRequest request){
-        Map<String,String> params = new HashMap<String,String>();
-        Map requestParams = request.getParameterMap();
-        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
-            String name = (String) iter.next();
-            String[] values = (String[]) requestParams.get(name);
-            String valueStr = "";
-            for (int i = 0; i < values.length; i++) {
-                valueStr = (i == values.length - 1) ? valueStr + values[i]
-                        : valueStr + values[i] + ",";
-            }
-            params.put(name, valueStr);
+    @RequestMapping(value = "/zfqm")
+    @ResponseBody
+    public Tip<String> zfqm2(Double price,HttpServletRequest request,HttpSession session){
+        User user = (User) session.getAttribute(Const.USER);
+        Double money = Math.abs(price);
+
+        Money moneyRecord = new Money();
+        try {
+            moneyRecord.setId(UUIDFactory.getLongId());
+            moneyRecord.setSetTime(new Date());
+            moneyRecord.setInfoId(user.getId());
+            moneyRecord.setUserId(user.getId());
+            moneyRecord.setMoney(money);
+            moneyRecord.setType(1);
+            moneyRecord.setStatus(2);
+            moneyRecord.setIntro("充值");
+            moneyService.insert(moneyRecord);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Tip<>(2,"创建订单失败！");
         }
+
+        Map<String,String> params = createParams(moneyRecord.getId().toString(),money.toString());
+
         if(params!=null&&params.size()>0)
         {
             //partner
-            String partner=request.getParameter("partner");
+            String partner=AlipayConfig.PARTNER;
             AlipayCore.logResult(partner,"partner");
             //接口名
-            String service=request.getParameter("service");
+            String service=AlipayConfig.SERVICE;
             //获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
 
             if(partner.replace("\"","").equals(AlipayConfig.PARTNER)&& service.replace("\"","").equals(AlipayConfig.SERVICE)){//确认PID和接口名称。
@@ -241,7 +252,7 @@ public class AppAlipayController {
                 }
 
                 //把签名得到的sign和签名类型sign_type拼接在待签名字符串后面。
-                data = data+"&sign=\""+rsa_sign+"\"&sign_type=\""+AlipayConfig.SIGN_TYPE+"\"";
+                data = data+"&sign="+rsa_sign+"&sign_type="+AlipayConfig.SIGN_TYPE;
 
                 //返回给客户端,建议在客户端使用私钥对应的公钥做一次验签，保证不是他人传输。
                 return new Tip<>(data);
