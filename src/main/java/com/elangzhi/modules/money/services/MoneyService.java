@@ -109,7 +109,7 @@ public class MoneyService extends BaseService<Money> {
      * @param InfoId 类型对应id，针对挑战的就传递挑战id，针对用户的就传用户id
      * @return 标志：0，失败；1，成功；2，余额不足；
      */
-    public Integer insertByType(Long userId,Integer type,Double money,Long InfoId) throws Exception {
+    public Integer insertByType(Long userId,Integer type,Double money,Long InfoId,String zfb) throws Exception {
 
         String sMoney = null;
         try {
@@ -126,6 +126,7 @@ public class MoneyService extends BaseService<Money> {
         moneyRecord.setUserId(userId);
         moneyRecord.setMoney(money);
         moneyRecord.setType(type);
+        moneyRecord.setZfb(zfb);
         switch (type){
             case 1:{
                 moneyRecord.setIntro("充值");

@@ -59,14 +59,14 @@ public class TargetController extends AdminBaseController<Target> {
         try {
             if(target.getOpinion() == 1){
 
-                moneyService.insertByType(target.getUserId(),5,target.getPrice(),target.getId());
+                moneyService.insertByType(target.getUserId(),5,target.getPrice(),target.getId(),"");
 
             }else if(target.getOpinion() == 0){
 
                     List<TargetSupervise> tsList = targetSuperviseService.listByTargetId(target.getId());
                     Double price = target.getPrice()/tsList.size();
                     for(TargetSupervise ts : tsList){
-                        moneyService.insertByType(ts.getUserId(),4,price,target.getId());
+                        moneyService.insertByType(ts.getUserId(),4,price,target.getId(),"");
                     }
             }
         } catch (Exception e) {

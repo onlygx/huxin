@@ -48,7 +48,7 @@ public class AppMoneyController {
         User user = (User) session.getAttribute(Const.USER);
         Double value = Math.abs(money);
         try {
-            moneyService.insertByType(user.getId(),1,value,user.getId());
+            moneyService.insertByType(user.getId(),1,value,user.getId(),"");
             return new Tip<>();
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,15 +62,19 @@ public class AppMoneyController {
     public Tip<String> outCash(
                               @ApiIgnore HttpSession session,
                               @ApiParam(name = "money",value = "金额")
-                              @RequestParam Double money
+                              @RequestParam Double money,
+                              @ApiParam(name = "zfb",value = "支付宝账号")
+                              @RequestParam String zfb
     ){
         User user = (User) session.getAttribute(Const.USER);
-        if(user.getZfb() == null || user.getZfb().equals("")){
-            return new Tip<>(3,"请先绑定支付宝！");
+        if(zfb == null || zfb.equals("")){
+            return new Tip<>(3,"请输入支付宝账号！");
         }
         Double value = Math.abs(money);
+
+
         try {
-            int status = moneyService.insertByType(user.getId(),2,-value,user.getId());
+            int status = moneyService.insertByType(user.getId(),2,-value,user.getId(),zfb);
             if(status == 1){
                 return new Tip<>();
             }else{

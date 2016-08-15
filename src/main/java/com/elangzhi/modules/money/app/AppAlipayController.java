@@ -43,7 +43,8 @@ public class AppAlipayController {
         String sign = param.get("sign").toString();                                    //签名
         String outTradeNo = param.get("out_trade_no").toString();    //商户网站唯一订单号
         String tradeStatus = param.get("trade_status").toString();     //交易状态
-        //String tradeNo = param.get("trade_no").toString();                   //支付宝交易号
+        String tradeNo = param.get("trade_no").toString();                   //支付宝交易号
+        String buyerEmail = param.get("buyer_email").toString();          //买家支付宝账号
         String notifyId = param.get("notify_id").toString();                  //通知校验ID
 
 
@@ -66,7 +67,7 @@ public class AppAlipayController {
                         if(outTradeNo.isEmpty()){
                             return "error";
                         }
-                        if(tradeStatus.equals("TRADE_SUCCESS")){
+                        if(tradeStatus.equals("TRADE_SUCCESS") || tradeStatus.equals("TRADE_FINISHED")){
                             //验证通过
                             money = moneyService.selectById(Long.parseLong(outTradeNo));
                             User user = userService.selectById(money.getUserId());
@@ -75,6 +76,8 @@ public class AppAlipayController {
                                 user.setMoney(value);
                                 userService.updateById(user);
                                 money.setStatus(1);
+                                money.setZfb(buyerEmail);
+                                money.setIntro(param.toString());
                                 moneyService.updateById(money);
                             }
                         }else{
@@ -105,55 +108,6 @@ public class AppAlipayController {
         return "success";
     }
 
-/*    @RequestMapping(value = "/zfqm")
-    @ResponseBody*/
-    public Tip<String> zfqm(Double price,HttpSession session) throws UnsupportedEncodingException {
-
-        User user = (User) session.getAttribute(Const.USER);
-        Double money = Math.abs(price);
-/*        String sMoney = null;
-        try {
-            sMoney = new java.text.DecimalFormat("#.00").format(money);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Tip<>(1,"请输入正确的金额！");
-        }
-        money = Double.valueOf(sMoney);*/
-
-        Money moneyRecord = new Money();
-        try {
-            moneyRecord.setId(UUIDFactory.getLongId());
-            moneyRecord.setSetTime(new Date());
-            moneyRecord.setInfoId(user.getId());
-            moneyRecord.setUserId(user.getId());
-            moneyRecord.setMoney(money);
-            moneyRecord.setType(1);
-            moneyRecord.setStatus(2);
-            moneyRecord.setIntro("充值");
-            moneyService.insert(moneyRecord);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new Tip<>(2,"创建订单失败！");
-        }
-
-        Map<String,String> params = createParams(moneyRecord.getId().toString(),money.toString());
-        String rsaSign = "";
-        String url = "";
-        // 对订单做RSA 签名
-        try {
-            rsaSign = URLEncoder.encode(AlipaySignature.rsaSign(params,AlipayConfig.RSA_PRIVATE,"UTF-8"),AlipayConfig.INPUT_CHARSET);
-            url = AlipaySignature.getSignContent(params);
-            url+="&sign_type=" + AlipayConfig.SIGN_TYPE;
-            url+="&sign=" + rsaSign;
-
-
-        } catch (AlipayApiException e) {
-            e.printStackTrace();
-            return new Tip<>(3,"签名失败");
-        }
-
-        return new Tip<>(url);
-    }
 
     private Map<String,String> createParams(String id,String sMoney){
         Map<String,String> params = new HashMap<>();

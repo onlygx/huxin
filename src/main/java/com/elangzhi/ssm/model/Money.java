@@ -27,10 +27,12 @@ public class Money extends BaseModel {
     private Date setTime;
 
     /**
-     * 成功状态，1，成功。2，待处理；（支付宝审核、提现用）
+     * 成功状态，1，成功。2，待处理；（支付宝审核、提现用），0，拒绝
      */
     private Integer status;
 
+    //支付宝账号
+    private String zfb;
 
     /**
      * 用来给Objective-C语言做适配
@@ -46,6 +48,14 @@ public class Money extends BaseModel {
 
     public void setStringId(String stringId) {
         this.id = Long.parseLong(stringId);
+    }
+
+    public String getZfb() {
+        return zfb;
+    }
+
+    public void setZfb(String zfb) {
+        this.zfb = zfb;
     }
 
     public Money(Long id, Double money, String intro, Long userId, Integer type, Long infoId, Date setTime) {

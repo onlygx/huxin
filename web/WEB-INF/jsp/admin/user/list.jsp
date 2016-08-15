@@ -94,6 +94,7 @@ Version: 1.0
                 </th>
                 <th>编号</th>
                 <th>用户名</th>
+                <th>昵称</th>
                 <th>电话</th>
                 <th>简介</th>
                 <th>qq</th>
@@ -106,6 +107,7 @@ Version: 1.0
                     <td class="center"><input type="checkbox" class="checkboxes" value="${data.id}"/></td>
                     <td>${data.id}</td>
                     <td>${data.userName}</td>
+                    <td>${data.nick}</td>
                     <td>${data.phone}</td>
                     <td>${data.intro}</td>
                     <td>${data.qq}</td>

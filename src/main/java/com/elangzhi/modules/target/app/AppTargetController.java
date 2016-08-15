@@ -78,7 +78,7 @@ public class AppTargetController {
             Double value = Math.abs(target.getPrice());
             User user = (User)session.getAttribute(Const.USER);
             //验证余额
-            int status = moneyService.insertByType(user.getId(),3,-value,target.getId());
+            int status = moneyService.insertByType(user.getId(),3,-value,target.getId(),"");
             if(status == 2){
                 return new Tip<>(2);
             }
