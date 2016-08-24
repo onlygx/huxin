@@ -8,6 +8,7 @@ import com.elangzhi.ssm.model.User;
 import com.elangzhi.ssm.services.BaseService;
 import com.elangzhi.ssm.tools.UUIDFactory;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
@@ -27,6 +28,24 @@ public class MoneyService extends BaseService<Money> {
 
     @Resource
     private UserService userService;
+
+
+    /**
+     * 按条件获取
+     * @param money {userId,status,type}
+     * @param page
+     * @param size
+     * @return
+     * @throws Exception
+     */
+    public PageInfo<Money> listByMoney(Money money,Integer page,Integer size)  {
+        try {
+            return moneyDao.listByMoney(money,page,size);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return  null;
+        }
+    }
 
     /**
     * 保存数据

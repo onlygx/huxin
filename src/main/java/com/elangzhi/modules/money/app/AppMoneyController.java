@@ -35,7 +35,20 @@ import java.util.Map;
 @RequestMapping("/app/money")
 public class AppMoneyController {
 
-
+/*    public Tip<PageInfo<Money>> listByMoney(
+            HttpSession session,
+            @ApiParam(name = "page",value = "第几页")
+            @RequestParam Integer page,
+            @ApiParam(name = "size",value = "每页大小")
+            @RequestParam Integer size
+            ){
+        User user = (User) session.getAttribute(Const.USER);
+        Money money = new Money();
+        money.setUserId(user.getId());
+        money.setType(1);
+        PageInfo<Money> moneyPageInfo = moneyService.listByMoney(money,page,size);
+        return new Tip<>(moneyPageInfo);
+    }*/
 
 
     @RequestMapping(value = "/addCash", method = RequestMethod.POST)

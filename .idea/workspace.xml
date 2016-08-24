@@ -6,11 +6,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4c48440-1bc3-4a0d-8ab6-116121abb174" name="Default" comment="company">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sql/huxin8.19.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+    <list default="true" id="e4c48440-1bc3-4a0d-8ab6-116121abb174" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/project.properties" afterPath="$PROJECT_DIR$/src/main/resources/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppMoneyController.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppMoneyController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/controller/MoneyController.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/controller/MoneyController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/dao/MoneyDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/dao/MoneyDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/services/MoneyService.java" afterPath="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/services/MoneyService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/money/MoneyMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/money/MoneyMapper.xml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,90 +41,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="jdbc.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/jdbc.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VersionMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/ssm/VersionMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1144">
-              <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-              <folding>
-                <marker date="1468306967712" expanded="true" signature="497:585" ph="select id,co... t_version" />
-                <marker date="1468306967712" expanded="true" signature="682:728" ph="delete from " />
-                <marker date="1468306967712" expanded="true" signature="1101:1226" ph="insert into t_version... " />
-                <marker date="1468306967712" expanded="true" signature="1351:1877" ph="update t_ver... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spring-mybatis.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mybatis.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-              <folding>
-                <marker date="1471317461327" expanded="false" signature="3495:3520" ph="1800" />
-                <marker date="1471317461327" expanded="false" signature="3622:3637" ph="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="initHash.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/static/js/initHash.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ModuleConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/generator/generator/ModuleConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1342">
-              <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#7776#7777#0" expanded="false" />
-                <element signature="e#7809#7810#0" expanded="false" />
-                <element signature="e#7893#7894#0" expanded="false" />
-                <element signature="e#7937#7938#0" expanded="false" />
-                <element signature="e#8000#8001#0" expanded="false" />
-                <element signature="e#8028#8029#0" expanded="false" />
-                <element signature="e#8101#8102#0" expanded="false" />
-                <element signature="e#8135#8136#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppAlipayController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AppAlipayController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppAlipayController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+            <state relative-caret-position="594">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MoneyMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/money/MoneyMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2332">
+              <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+              <folding>
+                <element signature="e#2853#2857#0" expanded="false" />
+                <marker date="1471827851455" expanded="true" signature="490:550" ph="select a.* f... t_money" />
+                <marker date="1471827851455" expanded="true" signature="647:691" ph="delete from " />
+                <marker date="1471827851455" expanded="true" signature="1060:1234" ph="insert into t_money... " />
+                <marker date="1471827851455" expanded="true" signature="1357:2165" ph="update t_mon... " />
+                <marker date="1471827851455" expanded="true" signature="2315:2399" ph="select a.* f... t_money" />
+                <marker date="1471827851455" expanded="true" signature="2531:2925" ph="select a.* f... t_money" />
+                <marker date="1471827851455" expanded="true" signature="3090:3398" ph="select a.* f... t_money" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MoneyDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/dao/MoneyDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="29" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MoneyService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/services/MoneyService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ModuleConfig.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/generator/generator/ModuleConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="424">
+              <caret line="30" column="72" selection-start-line="30" selection-start-column="72" selection-end-line="30" selection-end-column="72" />
+              <folding>
+                <element signature="e#594#621#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppMoneyController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppMoneyController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MoneyController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/controller/MoneyController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="25" column="78" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spring-mvc.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <file leaf-file-name="AdminBaseController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/controller/AdminBaseController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="36" column="74" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="82" />
-              <folding />
+            <state relative-caret-position="3564">
+              <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="189" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,9 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/services/AdminService.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/admin/target/list.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/task/TargetStatusTask.java" />
         <option value="$PROJECT_DIR$/web/swagger/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/controller/AdminBaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/user/services/OpenIMService.java" />
@@ -183,9 +196,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/controller/util/ParamMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/user/services/UserService.java" />
         <option value="$PROJECT_DIR$/src/test/java/ErrorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/money/MoneyMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/services/MoneyService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppMoneyController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/target/controller/TargetController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/target/app/AppTargetController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/model/Money.java" />
@@ -197,6 +207,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/interceptor/LoginHandlerInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/project.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppAlipayController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/dao/MoneyDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/services/MoneyService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/money/MoneyMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppMoneyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/controller/MoneyController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/elangzhi/generator/generator/ModuleConfig.java" />
       </list>
     </option>
   </component>
@@ -259,6 +275,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1128,6 +1145,86 @@
               <option name="myItemId" value="money" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huxin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huxin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elangzhi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="money" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huxin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huxin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elangzhi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="money" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1193,6 +1290,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="friendBook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huxin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="huxin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elangzhi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="generator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1231,35 +1362,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huxin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="huxin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sql" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.42647058" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/lib/alipay-sdk-java20160805120059.jar!/" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
@@ -1947,7 +2063,12 @@
       <workItem from="1471394653404" duration="3507000" />
       <workItem from="1471480783997" duration="18502000" />
       <workItem from="1471568984479" duration="11707000" />
-      <workItem from="1471588718726" duration="6912000" />
+      <workItem from="1471588718726" duration="8226000" />
+      <workItem from="1471826896548" duration="9449000" />
+      <workItem from="1471840397397" duration="11226000" />
+      <workItem from="1471913591070" duration="4734000" />
+      <workItem from="1471920376924" duration="15208000" />
+      <workItem from="1471999446915" duration="18314000" />
     </task>
     <task id="LOCAL-00001" summary="company">
       <created>1468835052377</created>
@@ -2096,11 +2217,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471481417727</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="company">
+      <created>1471598076895</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1471598076895</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372092000" />
+    <option name="totallyTimeSpent" value="432337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
@@ -2118,14 +2246,13 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4156692" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4156692" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25136018" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25897714" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41675735" sideWeight="0.63050073" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25897714" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.4939302" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24010696" sideWeight="0.4943274" order="0" side_tool="false" content_ui="tabs" />
@@ -2137,6 +2264,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973261" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25136018" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3517018" sideWeight="0.4969651" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2186,28 +2314,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/controller/AdminBaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3831">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/controller/MoneyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/tools/Const.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/tools/UtilDate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -2292,28 +2398,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/money/MoneyMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="82" column="18" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
-          <folding>
-            <marker date="1471228907432" expanded="true" signature="490:550" ph="select a.* f... t_money" />
-            <marker date="1471228907432" expanded="true" signature="647:691" ph="delete from " />
-            <marker date="1471228907432" expanded="true" signature="1060:1234" ph="insert into t_money... " />
-            <marker date="1471228907432" expanded="true" signature="1357:2165" ph="update t_mon... " />
-            <marker date="1471228907432" expanded="true" signature="2315:2399" ph="select a.* f... t_money" />
-            <marker date="1471228907432" expanded="true" signature="2531:2925" ph="select a.* f... t_money" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/services/MoneyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="118" column="9" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/target/controller/TargetController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="946">
@@ -2349,18 +2433,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppMoneyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="50" column="76" selection-start-line="50" selection-start-column="76" selection-end-line="50" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/admin/user/list.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2112">
           <caret line="96" column="27" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2375,14 +2451,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468573885095" expanded="true" signature="499:563" ph="select a.* f... t_bank_card" />
-            <marker date="1468573885095" expanded="true" signature="660:708" ph="delete from " />
-            <marker date="1468573885095" expanded="true" signature="1084:1229" ph="insert into t_bank_card... " />
-            <marker date="1468573885095" expanded="true" signature="1355:1978" ph="update t_ban... " />
-            <marker date="1468573885095" expanded="true" signature="2131:2186" ph="select a.* f... t_bank_card" />
-            <marker date="1468573885095" expanded="true" signature="2348:2437" ph="select a.* f... t_bank_card" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2390,15 +2458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1469429619244" expanded="true" signature="494:555" ph="select a.* f... t_friend" />
-            <marker date="1469429619244" expanded="true" signature="652:697" ph="delete from " />
-            <marker date="1469429619244" expanded="true" signature="1068:1208" ph="insert into t_friend... " />
-            <marker date="1469429619244" expanded="true" signature="1332:1880" ph="update t_fri... " />
-            <marker date="1469429619244" expanded="true" signature="2031:2083" ph="select a.* f... t_friend" />
-            <marker date="1469429619244" expanded="true" signature="2220:2331" ph="select a.* f... t_friend" />
-            <marker date="1469429619244" expanded="true" signature="2473:2586" ph="select a.* f... t_friend" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2406,14 +2465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <marker date="1469422344496" expanded="true" signature="503:569" ph="select a.* f... t_friend_book" />
-            <marker date="1469422344496" expanded="true" signature="666:716" ph="delete from " />
-            <marker date="1469422344496" expanded="true" signature="1096:1195" ph="insert into t_friend_book... " />
-            <marker date="1469422344496" expanded="true" signature="1323:1671" ph="update t_fri... " />
-            <marker date="1469422344496" expanded="true" signature="1826:1883" ph="select a.* f... t_friend_book" />
-            <marker date="1469422344496" expanded="true" signature="2024:2289" ph="select a.*,b... t_friend_book" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2421,13 +2472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468732909667" expanded="true" signature="496:558" ph="select a.* f... t_opinion" />
-            <marker date="1468732909667" expanded="true" signature="655:701" ph="delete from " />
-            <marker date="1468732909667" expanded="true" signature="1074:1180" ph="insert into t_opinion... " />
-            <marker date="1468732909667" expanded="true" signature="1305:1665" ph="update t_opi... " />
-            <marker date="1468732909667" expanded="true" signature="1817:1870" ph="select a.* f... t_opinion" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2435,15 +2479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468655001536" expanded="true" signature="493:554" ph="select a.* f... t_record" />
-            <marker date="1468655001536" expanded="true" signature="651:696" ph="delete from " />
-            <marker date="1468655001536" expanded="true" signature="1067:1209" ph="insert into t_record... " />
-            <marker date="1468655001536" expanded="true" signature="1333:1884" ph="update t_rec... " />
-            <marker date="1468655001536" expanded="true" signature="2035:2120" ph="select a.* f... t_record" />
-            <marker date="1468655001536" expanded="true" signature="2264:2383" ph="select a.* f... t_record" />
-            <marker date="1468655001536" expanded="true" signature="2529:2652" ph="select a.* f... t_record" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2451,14 +2486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468306967710" expanded="true" signature="498:583" ph="select * fro... t_account" />
-            <marker date="1468306967710" expanded="true" signature="727:837" ph="select id,us... t_account" />
-            <marker date="1468306967710" expanded="true" signature="934:980" ph="delete from " />
-            <marker date="1468306967710" expanded="true" signature="1353:1525" ph="insert into t_account... " />
-            <marker date="1468306967710" expanded="true" signature="1650:2382" ph="update t_acc... " />
-            <marker date="1468306967710" expanded="true" signature="2534:2637" ph="select id,us... t_account" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2466,13 +2493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468306967710" expanded="true" signature="505:586" ph="select id,ac... t_account_role" />
-            <marker date="1468306967710" expanded="true" signature="683:734" ph="delete from " />
-            <marker date="1468306967710" expanded="true" signature="1116:1212" ph="insert into t_account_role... " />
-            <marker date="1468306967710" expanded="true" signature="1341:1615" ph="update t_acc... " />
-            <marker date="1468306967710" expanded="true" signature="1771:1845" ph="select id,ac... t_account_role" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2480,13 +2500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468759936143" expanded="true" signature="491:597" ph="select id,na... t_admin" />
-            <marker date="1468759936143" expanded="true" signature="694:738" ph="delete from " />
-            <marker date="1468759936143" expanded="true" signature="1107:1278" ph="insert into t_admin... " />
-            <marker date="1468759936143" expanded="true" signature="1401:2202" ph="update t_adm... " />
-            <marker date="1468759936143" expanded="true" signature="3050:3156" ph="select a.* f... t_admin" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2494,12 +2507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468306967710" expanded="true" signature="488:578" ph="select id,pa... t_city" />
-            <marker date="1468306967710" expanded="true" signature="675:718" ph="delete from " />
-            <marker date="1468306967710" expanded="true" signature="1085:1220" ph="insert into t_city... " />
-            <marker date="1468306967710" expanded="true" signature="1342:1953" ph="update t_cit... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2507,13 +2514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468306967711" expanded="true" signature="486:579" ph="select id,co... t_log" />
-            <marker date="1468306967711" expanded="true" signature="676:718" ph="delete from " />
-            <marker date="1468306967711" expanded="true" signature="1083:1221" ph="insert into t_log... " />
-            <marker date="1468306967711" expanded="true" signature="1342:1889" ph="update t_log... " />
-            <marker date="1468306967711" expanded="true" signature="2037:2123" ph="select id,co... t_log" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2521,16 +2521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468306967711" expanded="true" signature="490:585" ph="select id,na... t_power" />
-            <marker date="1468306967711" expanded="true" signature="682:726" ph="delete from " />
-            <marker date="1468306967711" expanded="true" signature="1095:1242" ph="insert into t_power... " />
-            <marker date="1468306967711" expanded="true" signature="1365:2063" ph="update t_pow... " />
-            <marker date="1468306967711" expanded="true" signature="2644:2962" ph="select disti... t_power" />
-            <marker date="1468306967711" expanded="true" signature="2804:2897" ph="select c.rol... t_account_role" />
-            <marker date="1468306967711" expanded="true" signature="3131:3406" ph="select c.*,d... t_power" />
-            <marker date="1468306967711" expanded="true" signature="3213:3355" ph="select a.id,... t_power" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2538,12 +2528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468306967711" expanded="true" signature="488:573" ph="select id,na... t_role" />
-            <marker date="1468306967711" expanded="true" signature="670:713" ph="delete from " />
-            <marker date="1468306967711" expanded="true" signature="1080:1198" ph="insert into t_role... " />
-            <marker date="1468306967711" expanded="true" signature="1320:1768" ph="update t_rol... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2551,13 +2535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1468306967711" expanded="true" signature="500:577" ph="select id,ro... t_role_power" />
-            <marker date="1468306967711" expanded="true" signature="674:723" ph="delete from " />
-            <marker date="1468306967711" expanded="true" signature="1101:1191" ph="insert into t_role_power... " />
-            <marker date="1468306967711" expanded="true" signature="1318:1584" ph="update t_rol... " />
-            <marker date="1468306967711" expanded="true" signature="1738:1808" ph="select id,ro... t_role_power" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2565,13 +2542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-          <folding>
-            <marker date="1468306967712" expanded="true" signature="498:583" ph="select id,na... t_settings" />
-            <marker date="1468306967712" expanded="true" signature="680:727" ph="delete from " />
-            <marker date="1468306967712" expanded="true" signature="1102:1217" ph="insert into t_settings... " />
-            <marker date="1468306967712" expanded="true" signature="1343:1785" ph="update t_set... " />
-            <marker date="1468306967712" expanded="true" signature="1938:2016" ph="select id,na... t_settings" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2594,7 +2564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2602,12 +2571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1144">
           <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-          <folding>
-            <marker date="1468306967712" expanded="true" signature="497:585" ph="select id,co... t_version" />
-            <marker date="1468306967712" expanded="true" signature="682:728" ph="delete from " />
-            <marker date="1468306967712" expanded="true" signature="1101:1226" ph="insert into t_version... " />
-            <marker date="1468306967712" expanded="true" signature="1351:1877" ph="update t_ver... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2615,9 +2578,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2657,33 +2617,91 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/generator/generator/ModuleConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1342">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#7776#7777#0" expanded="false" />
-            <element signature="e#7809#7810#0" expanded="false" />
-            <element signature="e#7893#7894#0" expanded="false" />
-            <element signature="e#7937#7938#0" expanded="false" />
-            <element signature="e#8000#8001#0" expanded="false" />
-            <element signature="e#8028#8029#0" expanded="false" />
-            <element signature="e#8101#8102#0" expanded="false" />
-            <element signature="e#8135#8136#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppAlipayController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        <state relative-caret-position="594">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/dao/MoneyDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/money/MoneyMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2332">
+          <caret line="106" column="13" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+          <folding>
+            <element signature="e#2853#2857#0" expanded="false" />
+            <marker date="1471827851455" expanded="true" signature="490:550" ph="select a.* f... t_money" />
+            <marker date="1471827851455" expanded="true" signature="647:691" ph="delete from " />
+            <marker date="1471827851455" expanded="true" signature="1060:1234" ph="insert into t_money... " />
+            <marker date="1471827851455" expanded="true" signature="1357:2165" ph="update t_mon... " />
+            <marker date="1471827851455" expanded="true" signature="2315:2399" ph="select a.* f... t_money" />
+            <marker date="1471827851455" expanded="true" signature="2531:2925" ph="select a.* f... t_money" />
+            <marker date="1471827851455" expanded="true" signature="3090:3398" ph="select a.* f... t_money" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/ssm/controller/AdminBaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3564">
+          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="189" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/controller/MoneyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="78" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/app/AppMoneyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/modules/money/services/MoneyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/elangzhi/generator/generator/ModuleConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="30" column="72" selection-start-line="30" selection-start-column="72" selection-end-line="30" selection-end-column="72" />
+          <folding>
+            <element signature="e#594#621#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2746,6 +2764,7 @@
             <option name="proportions">
               <list>
                 <option value="0.42647058" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

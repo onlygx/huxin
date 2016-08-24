@@ -17,7 +17,17 @@ import java.util.Map;
 @Repository
 public class MoneyDao extends LzDao<Money> {
 
-
+    /**
+     * 按条件获取
+     * @param money {userId,status,type}
+     * @param page
+     * @param size
+     * @return
+     * @throws Exception
+     */
+    public PageInfo<Money> listByMoney(Money money,Integer page,Integer size) throws Exception {
+        return list("MoneyMapper.listByMoney",money,new RowBounds(page,size));
+    }
 
     /**
     * 保存数据

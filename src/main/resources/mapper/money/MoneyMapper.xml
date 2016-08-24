@@ -97,6 +97,22 @@
         order by a.set_time desc
     </select>
 
+    <!-- 获取指定类型的数据 -->
+    <select id="listByMoney" resultType="com.elangzhi.ssm.model.Money"  parameterType="com.elangzhi.ssm.model.Money">
+        select a.*
+        from t_money a
+        where  1=1
+        <if test="userId != null" >
+            and a.user_id = #{userId}
+        </if>
+        <if test="type != null" >
+            and a.type = #{type}
+        </if>
+        <if test="status != null" >
+            and a.status = #{status}
+        </if>
+    </select>
+
 
 
 </mapper>
