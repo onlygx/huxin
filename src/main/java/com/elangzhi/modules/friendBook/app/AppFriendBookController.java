@@ -2,6 +2,7 @@ package com.elangzhi.modules.friendBook.app;
 
 import com.elangzhi.modules.friendBook.services.FriendBookService;
 import com.elangzhi.ssm.controller.json.Tip;
+import com.elangzhi.ssm.model.Friend;
 import com.elangzhi.ssm.model.FriendBook;
 import com.elangzhi.ssm.model.User;
 import com.elangzhi.ssm.tools.Const;
@@ -10,12 +11,12 @@ import com.mangofactory.swagger.annotations.ApiIgnore;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -24,8 +25,8 @@ import java.util.List;
 * @author GaoXiang
 * @version 1.0
 */
-/*@Controller
-@RequestMapping("/app/friendBook")*/
+@Controller
+@RequestMapping("/app/friendBook")
 public class AppFriendBookController {
 
     @RequestMapping(value = "/uploadBook", method = RequestMethod.POST)
@@ -69,8 +70,6 @@ public class AppFriendBookController {
         List<FriendBook> friendBooks = friendBookService.listByUserId(user.getId());
         return new Tip<>(friendBooks);
     }
-
-
 
     //---------------------------- property -------------------------------
 
